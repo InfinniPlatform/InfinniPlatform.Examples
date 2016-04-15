@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind", "InfinniPlatform.Northwind\InfinniPlatform.Northwind.csproj", "{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{8440D466-6F9B-4068-A4F0-872D3A2BB376}"
+	ProjectSection(SolutionItems) = preProject
+		.files\Config\AppExtension.Debug.json = .files\Config\AppExtension.Debug.json
+		.files\Config\AppExtension.Release.json = .files\Config\AppExtension.Release.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{893DD540-B16A-473C-8813-DA6C8242C7FE}"
+	ProjectSection(SolutionItems) = preProject
+		.files\Packaging\GlobalAssemblyInfo.cs = .files\Packaging\GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind.Tests", "InfinniPlatform.Northwind.Tests\InfinniPlatform.Northwind.Tests.csproj", "{3F0B5B14-FD22-4649-873D-6764649B0370}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0B5B14-FD22-4649-873D-6764649B0370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0B5B14-FD22-4649-873D-6764649B0370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0B5B14-FD22-4649-873D-6764649B0370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0B5B14-FD22-4649-873D-6764649B0370}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8440D466-6F9B-4068-A4F0-872D3A2BB376} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
+		{893DD540-B16A-473C-8813-DA6C8242C7FE} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
+	EndGlobalSection
+EndGlobal
