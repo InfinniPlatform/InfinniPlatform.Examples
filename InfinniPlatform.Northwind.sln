@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind", "InfinniPlatform.Northwind\InfinniPlatform.Northwind.csproj", "{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind.Tests", "InfinniPlatform.Northwind.Tests\InfinniPlatform.Northwind.Tests.csproj", "{3F0B5B14-FD22-4649-873D-6764649B0370}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{8440D466-6F9B-4068-A4F0-872D3A2BB376}"
@@ -18,12 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{
 		.files\Packaging\GlobalAssemblyInfo.cs = .files\Packaging\GlobalAssemblyInfo.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind.Tests", "InfinniPlatform.Northwind.Tests\InfinniPlatform.Northwind.Tests.csproj", "{3F0B5B14-FD22-4649-873D-6764649B0370}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{DA3C3A18-81C1-41D8-A4F8-4D70BD32D067}"
 	ProjectSection(SolutionItems) = preProject
-		.files\Build\Run.bat = .files\Build\Run.bat
-		.files\Build\Run.ps1 = .files\Build\Run.ps1
+		.files\Build\InstallPlatform.ps1 = .files\Build\InstallPlatform.ps1
 	EndProjectSection
 EndProject
 Global

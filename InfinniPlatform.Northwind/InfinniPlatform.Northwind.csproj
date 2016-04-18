@@ -17,18 +17,24 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\..\Assemblies</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(OutputPath)\InfinniPlatform.ServiceHost.exe</StartProgram>
+    <StartArguments></StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\..\Assemblies</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(OutputPath)\InfinniPlatform.ServiceHost.exe</StartProgram>
+    <StartArguments></StartArguments>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="InfinniPlatform.Sdk, Version=1.5.0.597, Culture=neutral, processorArchitecture=MSIL">
@@ -90,6 +96,9 @@
     <Copy SourceFiles="@(MetadataFiles)" DestinationFolder="$(OutDir)content\$(SolutionName)\metadata\%(RecursiveDir)" />
     <Copy SourceFiles="@(AppExtensionFile)" DestinationFiles="$(OutDir)\AppExtension.json" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>powershell -NoProfile -ExecutionPolicy Bypass -Command "$(SolutionDir).files\Build\InstallPlatform.ps1 -SolutionName '$(SolutionName)' -SolutionDir '$(SolutionDir)' -SolutionOutDir '$(TargetDir)'"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
