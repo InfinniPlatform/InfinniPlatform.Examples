@@ -23,7 +23,8 @@
     <WarningLevel>4</WarningLevel>
     <StartAction>Program</StartAction>
     <StartProgram>$(OutputPath)\InfinniPlatform.ServiceHost.exe</StartProgram>
-    <StartArguments></StartArguments>
+    <StartArguments>
+    </StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
     <StartAction>Program</StartAction>
     <StartProgram>$(OutputPath)\InfinniPlatform.ServiceHost.exe</StartProgram>
-    <StartArguments></StartArguments>
+    <StartArguments>
+    </StartArguments>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="InfinniPlatform.Sdk, Version=1.5.0.597, Culture=neutral, processorArchitecture=MSIL">

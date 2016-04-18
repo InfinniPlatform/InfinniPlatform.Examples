@@ -16,10 +16,16 @@ param
 
 # Install NuGet
 
-$nugetPath = Join-Path (Join-Path $env:ProgramData 'NuGet') 'nuget.exe'
+$nugetDir = Join-Path $env:ProgramData 'NuGet'
+$nugetPath = Join-Path $nugetDir 'nuget.exe'
 
 if (-not (Test-Path $nugetPath))
 {
+	if (-not (Test-Path $nugetDir))
+	{
+		New-Item $nugetDir -ItemType Directory -ErrorAction SilentlyContinue
+	}
+
 	$nugetSourceUri = 'http://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
 	Invoke-WebRequest -Uri $nugetSourceUri -OutFile $nugetPath
 }
@@ -36,5 +42,5 @@ $solutionPackagesDir = Join-Path $SolutionDir 'packages'
 
 # Copy InfinniPlatform files
 
-Copy-Item -Path "packages\InfinniPlatform.$platformVersion\lib\net45\*" -Destination $SolutionOutDir -ErrorAction SilentlyContinue
-Copy-Item -Path "packages\InfinniPlatform.$platformVersion\content\metadata" -Destination "$SolutionOutDir\content\$SolutionName\metadata" -Recurse -ErrorAction SilentlyContinue
+Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\lib\net45\*" -Destination $SolutionOutDir -ErrorAction SilentlyContinue
+Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\content\metadata" -Destination "$SolutionOutDir\content\$SolutionName\metadata" -Recurse -ErrorAction SilentlyContinue
