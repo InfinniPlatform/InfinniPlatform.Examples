@@ -20,6 +20,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind.Tests", "InfinniPlatform.Northwind.Tests\InfinniPlatform.Northwind.Tests.csproj", "{3F0B5B14-FD22-4649-873D-6764649B0370}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{DA3C3A18-81C1-41D8-A4F8-4D70BD32D067}"
+	ProjectSection(SolutionItems) = preProject
+		.files\Build\Run.bat = .files\Build\Run.bat
+		.files\Build\Run.ps1 = .files\Build\Run.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,5 +47,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8440D466-6F9B-4068-A4F0-872D3A2BB376} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
 		{893DD540-B16A-473C-8813-DA6C8242C7FE} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
+		{DA3C3A18-81C1-41D8-A4F8-4D70BD32D067} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
 	EndGlobalSection
 EndGlobal
