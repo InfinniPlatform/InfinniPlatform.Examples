@@ -42,5 +42,5 @@ $solutionPackagesDir = Join-Path $SolutionDir 'packages'
 
 # Copy InfinniPlatform files
 
-Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\lib\net45\*" -Destination $SolutionOutDir -ErrorAction SilentlyContinue
+Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\lib\net45\*" -Destination $SolutionOutDir -Recurse -ErrorAction SilentlyContinue
 Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\content\metadata" -Destination "$SolutionOutDir\content\$SolutionName\metadata" -Recurse -ErrorAction SilentlyContinue
