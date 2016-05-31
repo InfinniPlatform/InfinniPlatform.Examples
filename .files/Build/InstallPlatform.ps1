@@ -5,14 +5,27 @@
 param
 (
 	[Parameter(HelpMessage = "Name of the solution.")]
-	[String] $SolutionName,
+	[String] $solutionName,
 
 	[Parameter(HelpMessage = "Path to the solution directory.")]
-	[String] $SolutionDir,
+	[String] $solutionDir,
 
 	[Parameter(HelpMessage = "Path to the solution output directory.")]
-	[String] $SolutionOutDir
+	[String] $solutionOutDir,
+
+	[Parameter(HelpMessage = "Active solution configuration.")]
+	[String] $solutionConfig = 'Debug',
+
+	[Parameter(HelpMessage = "Version of the .NET.")]
+	[String] $framework = 'net45'
 )
+
+# Run script in Debug mode only
+
+if (-not ($solutionConfig -like 'Debug'))
+{
+	return
+}
 
 # Install NuGet
 
@@ -32,15 +45,39 @@ if (-not (Test-Path $nugetPath))
 
 # Retrieve InfinniPlatform version
 
-$solutionPackagesConfig = Join-Path (Join-Path $SolutionDir $SolutionName) 'packages.config'
+$solutionPackagesConfig = Join-Path (Join-Path $solutionDir $solutionName) 'packages.config'
 $platformVersion = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@id='InfinniPlatform.Sdk']").Node.version
 
 # Install InfinniPlatform package
 
-$solutionPackagesDir = Join-Path $SolutionDir 'packages'
-& "$nugetPath" install 'InfinniPlatform' -Version $platformVersion -OutputDirectory $solutionPackagesDir -NonInteractive
+$solutionPackagesDir = Join-Path $solutionDir 'packages'
+& "$nugetPath" install 'InfinniPlatform' -Version $platformVersion -OutputDirectory $solutionPackagesDir -NonInteractive -Prerelease -Verbosity detailed
 
 # Copy InfinniPlatform files
 
-Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\lib\net45\*" -Destination $SolutionOutDir -Recurse -ErrorAction SilentlyContinue
-Copy-Item -Path "$solutionPackagesDir\InfinniPlatform.$platformVersion\content\metadata" -Destination "$SolutionOutDir\content\$SolutionName\metadata" -Recurse -ErrorAction SilentlyContinue
+$platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion"
+Copy-Item -Path (Join-Path $platformPackage "lib\$framework\*") -Destination $solutionOutDir -Recurse -ErrorAction SilentlyContinue
+Copy-Item -Path (Join-Path $platformPackage "content\metadata") -Destination (Join-Path $solutionOutDir "content\$solutionName\metadata") -Recurse -ErrorAction SilentlyContinue
+
+# Copy InfinniPlatform references
+
+$platformReferences = Join-Path $platformPackage "lib\$framework\references.lock"
+
+if (Test-Path $platformReferences)
+{
+	Get-Content $platformReferences | Foreach-Object {
+		if ($_ -match '^.*?\\lib\\.*?\\(?<path>.*?)$')
+		{
+			$item = Join-Path "$solutionOutDir" $matches.path
+
+			$itemParent = Split-Path $item
+
+			if (-not (Test-Path $itemParent))
+			{
+				New-Item $itemParent -ItemType Directory
+			}
+
+			Copy-Item -Path (Join-Path $solutionPackagesDir $_) -Destination $item -Recurse -ErrorAction SilentlyContinue
+		}
+	}
+}
