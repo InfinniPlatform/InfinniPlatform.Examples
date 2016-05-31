@@ -66,7 +66,7 @@ $platformReferences = Join-Path $platformPackage "lib\$framework\references.lock
 if (Test-Path $platformReferences)
 {
 	Get-Content $platformReferences | Foreach-Object {
-		if ($_ -match '^.*?\\lib\\.*?\\(?<path>.*?)$')
+		if ($_ -match '^.*?\\lib(\\.*?){0,1}\\(?<path>.*?)$')
 		{
 			$item = Join-Path "$solutionOutDir" $matches.path
 
