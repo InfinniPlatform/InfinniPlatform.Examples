@@ -51,7 +51,7 @@ $platformVersion = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@
 # Install InfinniPlatform package
 
 $solutionPackagesDir = Join-Path $solutionDir 'packages'
-& "$nugetPath" install 'InfinniPlatform' -Version $platformVersion -OutputDirectory $solutionPackagesDir -NonInteractive -Prerelease -Verbosity detailed
+& "$nugetPath" install 'InfinniPlatform' -Version $platformVersion -OutputDirectory $solutionPackagesDir -NonInteractive -Prerelease
 
 # Copy InfinniPlatform files
 
