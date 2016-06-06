@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{8440D4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{893DD540-B16A-473C-8813-DA6C8242C7FE}"
 	ProjectSection(SolutionItems) = preProject
+		.files\Packaging\BuildNupkg.bat = .files\Packaging\BuildNupkg.bat
+		.files\Packaging\BuildNupkg.ps1 = .files\Packaging\BuildNupkg.ps1
+		.files\Packaging\BuildSymbols.ps1 = .files\Packaging\BuildSymbols.ps1
+		.files\Packaging\CreateNuspec.ps1 = .files\Packaging\CreateNuspec.ps1
 		.files\Packaging\GlobalAssemblyInfo.cs = .files\Packaging\GlobalAssemblyInfo.cs
 	EndProjectSection
 EndProject
