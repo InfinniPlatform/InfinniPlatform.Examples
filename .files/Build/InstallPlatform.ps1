@@ -56,12 +56,12 @@ $solutionPackagesDir = Join-Path $solutionDir 'packages'
 # Copy InfinniPlatform files
 
 $platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion"
-Copy-Item -Path (Join-Path $platformPackage "lib\$framework\*") -Destination $solutionOutDir -Recurse -ErrorAction SilentlyContinue
+Copy-Item -Path (Join-Path $platformPackage "lib\$framework\*") -Destination $solutionOutDir -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
 Copy-Item -Path (Join-Path $platformPackage "content\metadata") -Destination (Join-Path $solutionOutDir "content\$solutionName\metadata") -Recurse -ErrorAction SilentlyContinue
 
 # Copy InfinniPlatform references
 
-$platformReferences = Join-Path $platformPackage "lib\$framework\references.lock"
+$platformReferences = Join-Path $platformPackage "lib\$framework\InfinniPlatform.references"
 
 if (Test-Path $platformReferences)
 {
@@ -77,7 +77,7 @@ if (Test-Path $platformReferences)
 				New-Item $itemParent -ItemType Directory
 			}
 
-			Copy-Item -Path (Join-Path $solutionPackagesDir $_) -Destination $item -Recurse -ErrorAction SilentlyContinue
+			Copy-Item -Path (Join-Path $solutionPackagesDir $_) -Destination $item -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
 		}
 	}
 }
