@@ -97,7 +97,8 @@
 		}
 
 		# Add InfinniPlatform reference
-		$projectNuspec = $projectNuspec + "            <dependency id=""InfinniPlatform"" version=""[$version]"" />`r`n"
+		$platformVersion = (Select-Xml -Path $packagesConfigPath -XPath "//package[@id='InfinniPlatform.Sdk']").Node.version
+		$projectNuspec = $projectNuspec + "            <dependency id=""InfinniPlatform"" version=""[$platformVersion]"" />`r`n"
 
 		$projectNuspec = $projectNuspec + `
 			"        </dependencies>`r`n" + `
