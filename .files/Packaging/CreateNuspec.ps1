@@ -42,10 +42,10 @@
 
 		$project = Get-ChildItem -Path $solutionDir -Filter 'InfinniPlatform.Northwind.csproj' -Recurse | Select-Object -First 1
 
-		[xml] $projectXml = Get-Content $project
+		[xml] $projectXml = Get-Content $project.FullName
 
 		$projectRefs = @()
-		$projectName = (Get-ChildItem $project).BaseName
+		$projectName = $project.BaseName
 		$projectAssemblyName = ($projectXml.Project.PropertyGroup.AssemblyName[0])
 
 		Write-Host "Create $projectName.nuspec"
@@ -154,6 +154,6 @@
 			"</package>"
 
 		Set-Content (Join-Path $outputDir "$projectName.references") -Value ($projectRefs | Sort-Object | Get-Unique -AsString)
-		Set-Content (Join-Path $outputDir ($projectName + '.nuspec')) -Value $projectNuspec
+		Set-Content (Join-Path $outputDir "$projectName.nuspec") -Value $projectNuspec
 	}
 }

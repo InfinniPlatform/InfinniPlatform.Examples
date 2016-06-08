@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinniPlatform.Sdk, Version=1.6.0.805, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Sdk.1.6.0.805\lib\net45\InfinniPlatform.Sdk.dll</HintPath>
+    <Reference Include="InfinniPlatform.Sdk, Version=1.7.0.819, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Sdk.1.7.0.819-master\lib\net45\InfinniPlatform.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
