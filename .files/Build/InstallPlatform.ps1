@@ -24,6 +24,15 @@ param
 
 if (-not ($solutionConfig -like 'Debug'))
 {
+	# Remove symbolic link
+	$contentPath = Join-Path $solutionOutDir "content"
+
+	if (Test-Path $contentPath)
+	{
+		cmd /c rmdir $contentPath /q
+		Write-Host "Deleted $contentPath"
+	}
+	
 	return
 }
 
@@ -53,11 +62,15 @@ $platformVersion = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@
 $solutionPackagesDir = Join-Path $solutionDir 'packages'
 & "$nugetPath" install 'InfinniPlatform' -Version $platformVersion -OutputDirectory $solutionPackagesDir -NonInteractive -Prerelease
 
+# Create symbolic link
+
+cmd /c mklink /d (Join-Path $solutionOutDir "content") (Join-Path $solutionDir "$solutionName\content")
+
 # Copy InfinniPlatform files
 
 $platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion"
 Copy-Item -Path (Join-Path $platformPackage "lib\$framework\*") -Destination $solutionOutDir -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
-Copy-Item -Path (Join-Path $platformPackage "content\metadata") -Destination (Join-Path $solutionOutDir "content\$solutionName\metadata") -Recurse -ErrorAction SilentlyContinue
+Copy-Item -Path (Join-Path $platformPackage "content\metadata") -Destination (Join-Path $solutionOutDir "content") -Recurse -ErrorAction SilentlyContinue
 
 # Copy InfinniPlatform references
 

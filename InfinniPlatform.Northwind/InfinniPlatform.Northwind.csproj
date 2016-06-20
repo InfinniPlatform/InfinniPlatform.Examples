@@ -79,8 +79,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include=".metadata\Documents\" />
-    <Folder Include=".metadata\Views\" />
+    <Folder Include="content\metadata\Documents\" />
+    <Folder Include="content\metadata\Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
