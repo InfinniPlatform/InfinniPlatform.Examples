@@ -62,9 +62,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Queues\BroadcastConsumerOne.cs" />
+    <Compile Include="Queues\BroadcastConsumerTwo.cs" />
     <Compile Include="Queues\ExampleMessage.cs" />
     <Compile Include="Queues\MessageProducerHttpService.cs" />
-    <Compile Include="Queues\TaskConsumer.cs" />
+    <Compile Include="Queues\TaskConsumerOne.cs" />
+    <Compile Include="Queues\TaskConsumerTwo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

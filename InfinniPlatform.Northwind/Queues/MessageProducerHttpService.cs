@@ -56,12 +56,11 @@ namespace InfinniPlatform.Northwind.Queues
                                                         .ToArray();
 
             // Отправляем сообщения в широковещательную очередь.
-            // Отправлять сообщения с типа DynamicWrapper, следует используя методы PublishDynamic/PublishDynamicAsync,
-            // в противном случае метод выбросит ArgumentException. 
-            // Т.к. в качестве имени очереди по умолчанию берется имя типа, отправка DynamicWrapper может привести к ошибочной обработке сообщений. 
-            // Чтобы избежать такой ситуации необходимо использовать именованную очередь.
             foreach (var message in dynamicWrapperMessages)
             {
+                // Отправлять сообщения с типа DynamicWrapper, следует используя методы PublishDynamic/PublishDynamicAsync, в противном случае метод выбросит ArgumentException.
+                // Т.к. в качестве имени очереди по умолчанию берется имя типа, отправка DynamicWrapper может привести к ошибочной обработке сообщений. 
+                // Чтобы избежать такой ситуации необходимо использовать именованную очередь.
                 await _broadcastProducer.PublishDynamicAsync(message, "DynamicQueue");
             }
 
