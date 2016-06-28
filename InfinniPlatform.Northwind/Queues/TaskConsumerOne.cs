@@ -13,7 +13,9 @@ namespace InfinniPlatform.Northwind.Queues
     {
         protected override async Task Consume(Message<ExampleMessage> message)
         {
-            await Task.Run(() => Console.WriteLine($"{nameof(TaskConsumerOne)} recieved a message {message.Body}."));
+            // Обработка сообщения.
+            // Получаем сообщение и выводим его содержимое в консоль.
+            await Task.Run(() => Console.WriteLine($"{nameof(TaskConsumerOne)} recieved a message [{message.Body}]."));
         }
     }
 }

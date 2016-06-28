@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using InfinniPlatform.Sdk.Dynamic;
 using InfinniPlatform.Sdk.Queues;
 using InfinniPlatform.Sdk.Queues.Consumers;
+using InfinniPlatform.Sdk.Serialization;
 
 namespace InfinniPlatform.Northwind.Queues
 {
@@ -18,7 +19,14 @@ namespace InfinniPlatform.Northwind.Queues
     {
         protected override async Task Consume(Message<DynamicWrapper> message)
         {
-            await Task.Run(() => Console.WriteLine($"{nameof(BroadcastConsumerTwo)} recieved a message {message.Body["Example"]}."));
+            // Обработка сообщения.
+            // Получаем сообщение и выводим его содержимое в консоль.
+            await Task.Run(() =>
+                           {
+                               var exampleMessage = JsonObjectSerializer.Default.ConvertFromDynamic<ExampleMessage>(message.Body["Example"]);
+
+                               Console.WriteLine($"{nameof(BroadcastConsumerTwo)} recieved a message [{exampleMessage}].");
+                           });
         }
     }
 }

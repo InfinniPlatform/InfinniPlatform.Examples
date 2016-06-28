@@ -20,6 +20,7 @@ namespace InfinniPlatform.Northwind.Queues
 
         public DateTime SomeDateTime { get; set; }
 
+        //Для красивого вывода в консоль.
         public override string ToString()
         {
             return $"{SomeInt}, {SomeText}, {SomeDateTime.ToString("s")}";
