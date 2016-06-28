@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace InfinniPlatform.Northwind.Tests.IoC
 {
-    [TestFixture(Category = "UnitTest")]
+    //[TestFixture(Category = "UnitTest")]
     public class NorthwindContainerModuleTest
     {
         [Test]
