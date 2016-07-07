@@ -82,15 +82,14 @@
     <None Include="..\.files\Config\AppExtension.Release.json">
       <Link>AppExtension.Release.json</Link>
     </None>
+    <None Include="content\metadata\Documents\TestDoc.json" />
+    <None Include="content\metadata\Views\TestView.json" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="content\metadata\Documents\" />
-    <Folder Include="content\metadata\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <MetadataFiles Include=".metadata\**\*.*">
+    <MetadataFiles Include="content\**\*.*">
       <Visible>false</Visible>
     </MetadataFiles>
   </ItemGroup>
@@ -101,13 +100,13 @@
     </AppExtensionFile>
   </ItemGroup>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="@(MetadataFiles)" DestinationFolder="$(OutDir)content\$(SolutionName)\metadata\%(RecursiveDir)" />
+    <Copy SourceFiles="@(MetadataFiles)" DestinationFolder="$(OutDir)\content\%(RecursiveDir)" />
     <Copy SourceFiles="@(AppExtensionFile)" DestinationFiles="$(OutDir)\AppExtension.json" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>powershell -NoProfile -ExecutionPolicy Bypass -Command "$(SolutionDir).files\Build\InstallPlatform.ps1 -solutionName '$(SolutionName)' -solutionDir '$(SolutionDir)' -solutionOutDir '$(TargetDir)' -solutionConfig '$(ConfigurationName)'"</PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
