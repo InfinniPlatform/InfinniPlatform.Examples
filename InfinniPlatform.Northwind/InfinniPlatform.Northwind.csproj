@@ -39,12 +39,12 @@
     </StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinniPlatform.Sdk, Version=1.7.0.898, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Sdk.1.7.0.898-master\lib\net45\InfinniPlatform.Sdk.dll</HintPath>
+    <Reference Include="InfinniPlatform.Sdk, Version=1.7.0.911, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Sdk.1.7.0.911-master\lib\net45\InfinniPlatform.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Watcher.1.0.0-master\lib\net45\InfinniPlatform.Watcher.dll</HintPath>
+    <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Watcher.1.0.0.7\lib\net45\InfinniPlatform.Watcher.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -72,6 +72,7 @@
     <Compile Include="Queues\MessageProducerHttpService.cs" />
     <Compile Include="Queues\TaskConsumerOne.cs" />
     <Compile Include="Queues\TaskConsumerTwo.cs" />
+    <Compile Include="RazorViews\RazorViewsHttpService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -88,6 +89,8 @@
     </None>
     <None Include="content\metadata\Documents\TestDoc.json" />
     <None Include="content\metadata\Views\TestView.json" />
+    <None Include="content\RazorViews\About.cshtml" />
+    <None Include="content\RazorViews\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

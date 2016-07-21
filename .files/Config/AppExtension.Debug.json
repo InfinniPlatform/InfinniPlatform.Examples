@@ -8,7 +8,7 @@
   "watcher": {
     /* Директория источника метаданных */
     "SourceDirectory": "C:\\Projects\\InfinniPlatform.Northwind\\InfinniPlatform.Northwind\\content",
-    /* Директория для синхнонизации */
+    /* Директория для синхронизации */
     "DestinationDirectory": "C:\\Projects\\InfinniPlatform.Northwind\\Assemblies\\content",
     /* Расширения синхронизируемых файлов */
     "WatchingFileExtensions": [
