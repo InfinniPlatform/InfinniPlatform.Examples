@@ -18,12 +18,18 @@ namespace InfinniPlatform.Northwind.RazorViews
         {
             builder.ServicePath = "/razor";
             // Возвращаем Razor-представление Index.cshtml, передавая динамическую модель данных.
-            builder.Get["/Index"] = httpRequest => Task.FromResult<object>(new ViewHttpResponce("Index", new DynamicWrapper
-                                                                                                         {
-                                                                                                             { "Title", "Title" },
-                                                                                                             { "Data1", "Somedata" },
-                                                                                                             { "Data2", DateTime.Now }
-                                                                                                         }));
+            builder.Get["/Index"] = httpRequest =>
+                                    {
+                                        var viewHttpResponce = new ViewHttpResponce("Index", new DynamicWrapper
+                                                                                             {
+                                                                                                 { "Title", "Title" },
+                                                                                                 { "Data1", "Somedata" },
+                                                                                                 { "Data2", DateTime.Now }
+                                                                                             });
+
+                                        return Task.FromResult<object>(viewHttpResponce);
+                                    };
+         
             // Возвращаем Razor-представление About.cshtml, не принимающее модель данных.
             builder.Get["/About"] = httpRequest1 => Task.FromResult<object>(new ViewHttpResponce("About"));
         }
