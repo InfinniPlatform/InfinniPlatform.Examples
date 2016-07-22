@@ -48,6 +48,17 @@ if (-not (Test-Path $nugetPath))
 $solutionPackagesConfig = Join-Path (Join-Path $solutionDir $solutionName) 'packages.config'
 $platformVersion = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@id='InfinniPlatform.Sdk']").Node.version
 
+# Check previous installation
+
+$platformVersionMarker = Join-Path $solutionOutDir '.platformVersion'
+
+$prevPlatformVersion = Get-Content -Path $platformVersionMarker -ErrorAction SilentlyContinue
+
+if ($prevPlatformVersion -match $platformVersion)
+{
+	return
+}
+
 # Install InfinniPlatform package
 
 $solutionPackagesDir = Join-Path $solutionDir 'packages'
@@ -55,29 +66,38 @@ $solutionPackagesDir = Join-Path $solutionDir 'packages'
 
 # Copy InfinniPlatform files
 
-$platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion"
-Copy-Item -Path (Join-Path $platformPackage "lib\$framework\*") -Destination $solutionOutDir -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
-Copy-Item -Path (Join-Path $platformPackage "content\metadata") -Destination (Join-Path $solutionOutDir "content\$solutionName\metadata") -Recurse -ErrorAction SilentlyContinue
+$platformOutDir = Join-Path $solutionOutDir 'platform'
+$platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion\lib\$framework\"
 
-# Copy InfinniPlatform references
+Remove-Item -Path $platformOutDir -Recurse -ErrorAction SilentlyContinue
+Copy-Item -Path $platformPackage -Destination $platformOutDir -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
 
-$platformReferences = Join-Path $platformPackage "lib\$framework\InfinniPlatform.references"
+$platformReferences = Join-Path $platformPackage "InfinniPlatform.references"
 
 if (Test-Path $platformReferences)
 {
 	Get-Content $platformReferences | Foreach-Object {
 		if ($_ -match '^.*?\\lib(\\.*?){0,1}\\(?<path>.*?)$')
 		{
-			$item = Join-Path "$solutionOutDir" $matches.path
+			$item = Join-Path $platformOutDir $matches.path
 
 			$itemParent = Split-Path $item
 
 			if (-not (Test-Path $itemParent))
 			{
-				New-Item $itemParent -ItemType Directory
+				New-Item $itemParent -ItemType Directory | Out-Null
 			}
 
 			Copy-Item -Path (Join-Path $solutionPackagesDir $_) -Destination $item -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
 		}
 	}
 }
+
+# Copy InfinniPlatform.ServiceHost files
+
+$serviceHostPackage = Join-Path $solutionPackagesDir "InfinniPlatform.ServiceHost.$platformVersion\lib\$framework\*"
+Copy-Item -Path $serviceHostPackage -Destination $solutionOutDir -Recurse -ErrorAction SilentlyContinue
+
+# Save installation number
+
+Set-Content -Path $platformVersionMarker -Value $platformVersion -ErrorAction SilentlyContinue
