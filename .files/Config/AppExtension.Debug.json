@@ -3,5 +3,16 @@
   "app": {
     /* Уникальное имя приложения, используется для изоляции данных между приложениями (по умолчанию - 'InfinniPlatform') */
     "Name": "Northwind"
+  },
+  /* Настройки наблюдателя */
+  "watcher": {
+    /* Директория источника метаданных */
+    "SourceDirectory": "C:\\Projects\\InfinniPlatform.Northwind\\InfinniPlatform.Northwind\\content",
+    /* Директория для синхронизации */
+    "DestinationDirectory": "C:\\Projects\\InfinniPlatform.Northwind\\Assemblies\\content",
+    /* Расширения синхронизируемых файлов */
+    "WatchingFileExtensions": [
+      ".json"
+    ]
   }
 }

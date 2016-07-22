@@ -43,6 +43,10 @@
       <HintPath>..\packages\InfinniPlatform.Sdk.1.7.0.919-master\lib\net45\InfinniPlatform.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Watcher.1.0.0.7\lib\net45\InfinniPlatform.Watcher.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -62,6 +66,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Queues\BroadcastConsumerOne.cs" />
+    <Compile Include="Queues\BroadcastConsumerTwo.cs" />
+    <Compile Include="Queues\ExampleMessage.cs" />
+    <Compile Include="Queues\MessageProducerHttpService.cs" />
+    <Compile Include="Queues\TaskConsumerOne.cs" />
+    <Compile Include="Queues\TaskConsumerTwo.cs" />
+    <Compile Include="RazorViews\RazorViewsHttpService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -76,15 +87,16 @@
     <None Include="..\.files\Config\AppExtension.Release.json">
       <Link>AppExtension.Release.json</Link>
     </None>
+    <None Include="content\metadata\Documents\TestDoc.json" />
+    <None Include="content\metadata\Views\TestView.json" />
+    <None Include="content\RazorViews\About.cshtml" />
+    <None Include="content\RazorViews\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include=".metadata\Documents\" />
-    <Folder Include=".metadata\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <MetadataFiles Include=".metadata\**\*.*">
+    <MetadataFiles Include="content\**\*.*">
       <Visible>false</Visible>
     </MetadataFiles>
   </ItemGroup>
@@ -95,13 +107,13 @@
     </AppExtensionFile>
   </ItemGroup>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="@(MetadataFiles)" DestinationFolder="$(OutDir)content\$(SolutionName)\metadata\%(RecursiveDir)" />
+    <Copy SourceFiles="@(MetadataFiles)" DestinationFolder="$(OutDir)\content\%(RecursiveDir)" />
     <Copy SourceFiles="@(AppExtensionFile)" DestinationFiles="$(OutDir)\AppExtension.json" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>powershell -NoProfile -ExecutionPolicy Bypass -Command "$(SolutionDir).files\Build\InstallPlatform.ps1 -solutionName '$(SolutionName)' -solutionDir '$(SolutionDir)' -solutionOutDir '$(TargetDir)' -solutionConfig '$(ConfigurationName)'"</PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
