@@ -30,33 +30,15 @@ namespace InfinniPlatform.Northwind.Queues
 
         public void Load(IHttpServiceBuilder builder)
         {
-            builder.ServicePath = "queue";
-            builder.Get["send"] = SendMessages;
-            builder.Get["get"] = GetMessages;
-        }
-
-        /// <summary>
-        /// Получает сообщение из очереди.
-        /// </summary>
-        private async Task<object> GetMessages(IHttpRequest httpRequest)
-        {
-            //Получаем сообщение из очереди с именем "OnDemandQueue".
-            var message = await _onDemandConsumer.Consume<ExampleMessage>("OnDemandQueue");
-
-            if (message == null)
-            {
-                return null;
-            }
-
-            //Получаем тело сообщения.
-            var body = (ExampleMessage)message.GetBody();
-
-            return $"{body}";
+            builder.ServicePath = "Queue";
+            builder.Get["Send"] = SendMessages;
+            builder.Get["Get"] = GetMessages;
         }
 
         /// <summary>
         /// Отправляет сообщения в очереди.
         /// </summary>
+        /// <example> Пример запроса: http://localhost:9900/Queue/Send </example>
         private async Task<object> SendMessages(IHttpRequest httpRequest)
         {
             // Составляем список сообщений.
@@ -95,6 +77,26 @@ namespace InfinniPlatform.Northwind.Queues
             }
 
             return $"{exampleMessages.Count + dynamicWrapperMessages.Length} messages successfully sended.";
+        }
+
+        /// <summary>
+        /// Получает сообщение из очереди по запросу.
+        /// </summary>
+        /// <example> Пример запроса: http://localhost:9900/Queue/Get </example>
+        private async Task<object> GetMessages(IHttpRequest httpRequest)
+        {
+            //Получаем сообщение из очереди с именем "OnDemandQueue".
+            var message = await _onDemandConsumer.Consume<ExampleMessage>("OnDemandQueue");
+
+            if (message == null)
+            {
+                return null;
+            }
+
+            //Получаем тело сообщения.
+            var body = (ExampleMessage)message.GetBody();
+
+            return $"{body}";
         }
     }
 }
