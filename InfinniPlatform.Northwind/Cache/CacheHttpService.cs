@@ -11,7 +11,7 @@ namespace InfinniPlatform.Northwind.Cache
     /// <remarks>
     /// Кэш может работать в двух режимах: 'Memory' и 'Shared' (устанавливается в секции 'cache', в значении 'Type' конфигурационого файла).
     /// В режиме 'Memory' кэш хранится в памяти и очищается при остановке приложения.
-    /// В режиме 'Shared' кэш хранится в памяти, но также дублируется в БД Redis. Это позволяет разделить его между несколькими экземплярами одного приложения.
+    /// В режиме 'Shared' кэш хранится в памяти, но также дублируется в БД Redis, что позволяет разделить его между несколькими экземплярами одного приложения.
     /// Подробнее http://infinniplatform.readthedocs.io/ru/latest/11-cache/index.html
     /// </remarks>
     public class CacheHttpService : IHttpService
@@ -33,7 +33,7 @@ namespace InfinniPlatform.Northwind.Cache
         /// <summary>
         /// Задает значение в кэше по ключу.
         /// </summary>
-        /// <param name="httpRequest"></param>
+        /// <param name="httpRequest">HTTP-запрос</param>
         /// <example> Пример запроса: http://localhost:9900/Cache/Set?key=key&value=value </example>
         private Task<object> Set(IHttpRequest httpRequest)
         {
@@ -50,7 +50,7 @@ namespace InfinniPlatform.Northwind.Cache
         /// <summary>
         /// по
         /// </summary>
-        /// <param name="httpRequest"></param>
+        /// <param name="httpRequest">HTTP-запрос</param>
         /// <example> Пример запроса: http://localhost:9900/Cache/Get?key=key </example>
         private Task<object> Get(IHttpRequest httpRequest)
         {
