@@ -1,30 +1,30 @@
 ﻿<#
 .Synopsis
-	Installs InfinniPlatform to the solution output directory.
+    Installs InfinniPlatform to the solution output directory.
 #>
 param
 (
-	[Parameter(HelpMessage = "Name of the solution.")]
-	[String] $solutionName,
+    [Parameter(HelpMessage = "Name of the solution.")]
+    [String] $solutionName,
 
-	[Parameter(HelpMessage = "Path to the solution directory.")]
-	[String] $solutionDir,
+    [Parameter(HelpMessage = "Path to the solution directory.")]
+    [String] $solutionDir,
 
-	[Parameter(HelpMessage = "Path to the solution output directory.")]
-	[String] $solutionOutDir,
+    [Parameter(HelpMessage = "Path to the solution output directory.")]
+    [String] $solutionOutDir,
 
-	[Parameter(HelpMessage = "Active solution configuration.")]
-	[String] $solutionConfig = 'Debug',
+    [Parameter(HelpMessage = "Active solution configuration.")]
+    [String] $solutionConfig = 'Debug',
 
-	[Parameter(HelpMessage = "Version of the .NET.")]
-	[String] $framework = 'net45'
+    [Parameter(HelpMessage = "Version of the .NET.")]
+    [String] $framework = 'net452'
 )
 
 # Run script in Debug mode only
 
 if (-not ($solutionConfig -like 'Debug'))
 {
-	return
+    return
 }
 
 # Install NuGet
@@ -34,13 +34,13 @@ $nugetPath = Join-Path $nugetDir 'nuget.exe'
 
 if (-not (Test-Path $nugetPath))
 {
-	if (-not (Test-Path $nugetDir))
-	{
-		New-Item $nugetDir -ItemType Directory -ErrorAction SilentlyContinue
-	}
+    if (-not (Test-Path $nugetDir))
+    {
+        New-Item $nugetDir -ItemType Directory -ErrorAction SilentlyContinue
+    }
 
-	$nugetSourceUri = 'http://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
-	Invoke-WebRequest -Uri $nugetSourceUri -OutFile $nugetPath
+    $nugetSourceUri = 'http://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
+    Invoke-WebRequest -Uri $nugetSourceUri -OutFile $nugetPath
 }
 
 # Retrieve InfinniPlatform version
@@ -56,7 +56,7 @@ $prevPlatformVersion = Get-Content -Path $platformVersionMarker -ErrorAction Sil
 
 if ($prevPlatformVersion -match $platformVersion)
 {
-	return
+    return
 }
 
 # Install InfinniPlatform package
@@ -76,21 +76,21 @@ $platformReferences = Join-Path $platformPackage "InfinniPlatform.references"
 
 if (Test-Path $platformReferences)
 {
-	Get-Content $platformReferences | Foreach-Object {
-		if ($_ -match '^.*?\\lib(\\.*?){0,1}\\(?<path>.*?)$')
-		{
-			$item = Join-Path $platformOutDir $matches.path
+    Get-Content $platformReferences | Foreach-Object {
+        if ($_ -match '^.*?\\lib(\\.*?){0,1}\\(?<path>.*?)$')
+        {
+            $item = Join-Path $platformOutDir $matches.path
 
-			$itemParent = Split-Path $item
+            $itemParent = Split-Path $item
 
-			if (-not (Test-Path $itemParent))
-			{
-				New-Item $itemParent -ItemType Directory | Out-Null
-			}
+            if (-not (Test-Path $itemParent))
+            {
+                New-Item $itemParent -ItemType Directory | Out-Null
+            }
 
-			Copy-Item -Path (Join-Path $solutionPackagesDir $_) -Destination $item -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
-		}
-	}
+            Copy-Item -Path (Join-Path $solutionPackagesDir $_) -Destination $item -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
+        }
+    }
 }
 
 # Copy InfinniPlatform.ServiceHost files

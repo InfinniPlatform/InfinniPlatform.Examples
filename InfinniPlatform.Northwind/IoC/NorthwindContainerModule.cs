@@ -1,4 +1,5 @@
-﻿using InfinniPlatform.Sdk.IoC;
+﻿using InfinniPlatform.Scheduler.Contract;
+using InfinniPlatform.Sdk.IoC;
 using InfinniPlatform.Sdk.Queues;
 using InfinniPlatform.Sdk.Services;
 
@@ -11,23 +12,34 @@ namespace InfinniPlatform.Northwind.IoC
     {
         public void Load(IContainerBuilder builder)
         {
-            //Получение информации о текущей сборке.
+            // Получение информации о текущей сборке
             var assembly = typeof(NorthwindContainerModule).Assembly;
 
-            //Пример регистрация отдельных потребителей.
-            /*builder.RegisterType<TaskConsumerOne>()
+            /*
+
+            // Регистрация потребителя сообщений TaskConsumerOne
+            builder.RegisterType<TaskConsumerOne>()
                    .As<ITaskConsumer>()
                    .SingleInstance();
 
+            // Регистрация потребителя сообщений TaskConsumerTwo
             builder.RegisterType<TaskConsumerTwo>()
                    .As<ITaskConsumer>()
-                   .SingleInstance();*/
+                   .SingleInstance();
 
-            //Регистрация всех потребителей сообщений.
+            */
+
+            // Регистрация всех потребителей сообщений
             builder.RegisterConsumers(assembly);
 
-            //Регистрация всех HTTP-сервисов.
+            // Регистрация всех HTTP-сервисов.
             builder.RegisterHttpServices(assembly);
+
+            // Регистрация всех обработчиков планировщика заданий
+            builder.RegisterJobHandlers(assembly);
+
+            // Регистрация всех источников планировщика заданий
+            builder.RegisterJobInfoSources(assembly);
         }
     }
 }

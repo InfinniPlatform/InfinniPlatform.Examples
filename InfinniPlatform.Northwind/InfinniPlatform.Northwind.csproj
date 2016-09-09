@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>InfinniPlatform.Northwind</RootNamespace>
     <AssemblyName>InfinniPlatform.Northwind</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -39,21 +39,36 @@
     </StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinniPlatform.Sdk, Version=1.7.0.935, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Sdk.1.7.0.935-master\lib\net45\InfinniPlatform.Sdk.dll</HintPath>
+    <Reference Include="InfinniPlatform.Scheduler, Version=1.10.0.1091, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Scheduler.1.10.0.1091-master\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Watcher.1.0.0.7\lib\net45\InfinniPlatform.Watcher.dll</HintPath>
+    <Reference Include="InfinniPlatform.Sdk, Version=1.10.0.1091, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Sdk.1.10.0.1091-master\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Watcher.1.0.0.8\lib\net45\InfinniPlatform.Watcher.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Quartz, Version=3.0.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.0-alpha2\lib\net45\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\.files\Packaging\GlobalAssemblyInfo.cs">
@@ -74,6 +89,8 @@
     <Compile Include="Queues\TaskConsumerOne.cs" />
     <Compile Include="Queues\TaskConsumerTwo.cs" />
     <Compile Include="RazorViews\RazorViewsHttpService.cs" />
+    <Compile Include="Scheduler\JobSource.cs" />
+    <Compile Include="Scheduler\SomeJobHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
