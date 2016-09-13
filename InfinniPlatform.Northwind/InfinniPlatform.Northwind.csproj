@@ -39,12 +39,12 @@
     </StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinniPlatform.Scheduler, Version=1.10.0.1091, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Scheduler.1.10.0.1091-master\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
+    <Reference Include="InfinniPlatform.Scheduler, Version=1.10.0.1098, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Scheduler.1.10.0.1098-master\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Sdk, Version=1.10.0.1091, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Sdk.1.10.0.1091-master\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
+    <Reference Include="InfinniPlatform.Sdk, Version=1.10.0.1098, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Sdk.1.10.0.1098-master\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
@@ -89,7 +89,7 @@
     <Compile Include="Queues\TaskConsumerOne.cs" />
     <Compile Include="Queues\TaskConsumerTwo.cs" />
     <Compile Include="RazorViews\RazorViewsHttpService.cs" />
-    <Compile Include="Scheduler\JobSource.cs" />
+    <Compile Include="Scheduler\SomeJobInfoSource.cs" />
     <Compile Include="Scheduler\SomeJobHandler.cs" />
   </ItemGroup>
   <ItemGroup>
