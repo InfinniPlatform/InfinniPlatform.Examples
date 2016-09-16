@@ -18,9 +18,9 @@ namespace InfinniPlatform.Northwind.RazorViews
         {
             builder.ServicePath = "/razor";
             // Возвращаем Razor-представление Index.cshtml, передавая динамическую модель данных.
-            builder.Get["/Index"] = httpRequest =>
+            builder.Get["/View1"] = httpRequest =>
                                     {
-                                        var viewHttpResponce = new ViewHttpResponce("Index", new DynamicWrapper
+                                        var viewHttpResponce = new ViewHttpResponce("View1", new DynamicWrapper
                                                                                              {
                                                                                                  { "Title", "Title" },
                                                                                                  { "Data1", "Somedata" },
@@ -31,7 +31,7 @@ namespace InfinniPlatform.Northwind.RazorViews
                                     };
          
             // Возвращаем Razor-представление About.cshtml, не принимающее модель данных.
-            builder.Get["/About"] = httpRequest1 => Task.FromResult<object>(new ViewHttpResponce("About"));
+            builder.Get["/View2"] = httpRequest1 => Task.FromResult<object>(new ViewHttpResponce("View2"));
         }
     }
 }
