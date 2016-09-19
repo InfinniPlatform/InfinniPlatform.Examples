@@ -7,6 +7,7 @@ window.InfinniUI.config.serverUrl = 'http://localhost:9900';
 window.InfinniUI.config.configName = 'test';
 
 window.InfinniUI.config.homePage = '/metadata/Views/HomePage.json';
+window.InfinniUI.config.signalRHubName = "SignalRPushNotificationServiceHub";
 
 // when disableLayoutManager = true, body will have full height and will scrollable
 // window.InfinniUI.config.disableLayoutManager = true;

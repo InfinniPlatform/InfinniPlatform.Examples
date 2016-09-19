@@ -39,12 +39,12 @@
     </StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinniPlatform.Scheduler, Version=1.11.0.1102, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Scheduler.1.11.0.1102-rabbitMqSignalR\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
+    <Reference Include="InfinniPlatform.Scheduler, Version=1.11.0.1103, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Scheduler.1.11.0.1103-rabbitMqSignalR\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Sdk, Version=1.11.0.1102, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Sdk.1.11.0.1102-rabbitMqSignalR\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
+    <Reference Include="InfinniPlatform.Sdk, Version=1.11.0.1103, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Sdk.1.11.0.1103-rabbitMqSignalR\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="InfinniPlatform.Watcher, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
@@ -75,6 +75,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Cache\CacheHttpService.cs" />
+    <Compile Include="SignalR\SignalRHttpService.cs" />
     <Content Include="content\www\css\main.css" />
     <Content Include="content\www\css\vendor.css" />
     <Content Include="content\www\img\favicon.ico" />
@@ -130,14 +131,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\www\js\config.js" />
+    <Content Include="content\www\js\HomePage\subscribe.js" />
     <Content Include="content\www\js\main.js" />
     <Content Include="content\www\js\platform.js" />
     <Content Include="content\www\js\templates.js" />
     <Content Include="content\www\js\vendor.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SignalR\" />
-  </ItemGroup>
+  <ItemGroup />
   <Target Name="AfterBuild">
     <Copy SourceFiles="@(MetadataFiles)" DestinationFolder="$(OutDir)\content\%(RecursiveDir)" />
     <Copy SourceFiles="@(AppExtensionFile)" DestinationFiles="$(OutDir)\AppExtension.json" />

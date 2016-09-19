@@ -23,7 +23,7 @@ namespace InfinniPlatform.Northwind.Queues
         //Для красивого вывода в консоль.
         public override string ToString()
         {
-            return $"{SomeInt}, {SomeText}, {SomeDateTime.ToString("s")}";
+            return $"{SomeInt}, {SomeText}, {SomeDateTime:s}";
         }
     }
 }
