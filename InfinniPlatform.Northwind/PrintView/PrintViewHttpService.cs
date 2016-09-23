@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -23,26 +24,23 @@ namespace InfinniPlatform.Northwind.PrintView
         {
             builder.ServicePath = "printView";
 
-            builder.Get["pdf"] = r => GetPrintViewExample(PrintViewFileFormat.Pdf, HttpConstants.PdfContentType);
-            builder.Get["html"] = r => GetPrintViewExample(PrintViewFileFormat.Html, HttpConstants.HtmlContentType);
+            builder.Get["pdf"] = r => GetPrintViewExample(PrintViewFileFormat.Pdf);
+            builder.Get["html"] = r => GetPrintViewExample(PrintViewFileFormat.Html);
         }
 
 
-        private Task<object> GetPrintViewExample(PrintViewFileFormat printViewFormat, string contentType)
+        private Task<object> GetPrintViewExample(PrintViewFileFormat fileFormat)
         {
             // Данные печатного представления
-            object printViewSource = new DynamicWrapper { { "Date", DateTime.Now } };
+            object dataSource = new DynamicWrapper { { "Date", DateTime.Now } };
 
             // Сборка, содержащая в ресурсах шаблон печатного представления
             var resourceAssembly = Assembly.GetExecutingAssembly();
 
             // Получение шаблона печатного представления по имени ресурса
-            var printViewTemplate = resourceAssembly.GetManifestResourceStream("InfinniPlatform.Northwind.PrintView.PrintViewExample.json");
+            Func<Stream> template = () => resourceAssembly.GetManifestResourceStream("InfinniPlatform.Northwind.PrintView.PrintViewExample.json");
 
-            // Создание печатного представления по шаблону и данным
-            var printView = _printViewBuilder.Build(printViewTemplate, printViewSource, printViewFormat);
-
-            var response = new StreamHttpResponse(printView, contentType);
+            var response = new PrintViewHttpResponse(_printViewBuilder, template, dataSource, fileFormat);
 
             return Task.FromResult<object>(response);
         }
