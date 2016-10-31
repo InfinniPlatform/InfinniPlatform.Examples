@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using InfinniPlatform.Sdk.Dynamic;
+using InfinniPlatform.Sdk.Http.Services;
 using InfinniPlatform.Sdk.Queues.Consumers;
 using InfinniPlatform.Sdk.Queues.Producers;
-using InfinniPlatform.Sdk.Services;
 
 namespace InfinniPlatform.Northwind.Queues
 {

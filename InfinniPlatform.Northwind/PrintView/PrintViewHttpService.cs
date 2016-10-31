@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using InfinniPlatform.PrintView.Contract;
 using InfinniPlatform.Sdk.Dynamic;
-using InfinniPlatform.Sdk.Services;
+using InfinniPlatform.Sdk.Http.Services;
 
 namespace InfinniPlatform.Northwind.PrintView
 {

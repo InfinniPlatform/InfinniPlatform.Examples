@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using InfinniPlatform.Sdk.Http.Services;
 using InfinniPlatform.Sdk.PushNotification;
-using InfinniPlatform.Sdk.Services;
 
 namespace InfinniPlatform.Northwind.SignalR
 {

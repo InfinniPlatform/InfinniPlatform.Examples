@@ -1,7 +1,7 @@
 ﻿using InfinniPlatform.Scheduler.Contract;
+using InfinniPlatform.Sdk.Http.Services;
 using InfinniPlatform.Sdk.IoC;
 using InfinniPlatform.Sdk.Queues;
-using InfinniPlatform.Sdk.Services;
 
 namespace InfinniPlatform.Northwind.IoC
 {
