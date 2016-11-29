@@ -39,20 +39,20 @@
     </StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinniPlatform.PrintView, Version=1.11.0.1244, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.PrintView.1.11.0.1244-viewEngine\lib\net452\InfinniPlatform.PrintView.dll</HintPath>
+    <Reference Include="InfinniPlatform.PrintView, Version=1.11.0.1246, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.PrintView.1.11.0.1246-viewEngine\lib\net452\InfinniPlatform.PrintView.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Scheduler, Version=1.11.0.1244, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Scheduler.1.11.0.1244-viewEngine\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
+    <Reference Include="InfinniPlatform.Scheduler, Version=1.11.0.1246, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Scheduler.1.11.0.1246-viewEngine\lib\net452\InfinniPlatform.Scheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Sdk, Version=1.11.0.1244, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Sdk.1.11.0.1244-viewEngine\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
+    <Reference Include="InfinniPlatform.Sdk, Version=1.11.0.1246, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Sdk.1.11.0.1246-viewEngine\lib\net452\InfinniPlatform.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="InfinniPlatform.Watcher, Version=1.11.0.1244, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InfinniPlatform.Watcher.1.11.0.1244-viewEngine\lib\net452\InfinniPlatform.Watcher.dll</HintPath>
+    <Reference Include="InfinniPlatform.Watcher, Version=1.11.0.1246, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InfinniPlatform.Watcher.1.11.0.1246-viewEngine\lib\net452\InfinniPlatform.Watcher.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

@@ -66,8 +66,8 @@ $solutionPackagesDir = Join-Path $solutionDir 'packages'
 
 # Copy InfinniPlatform files
 
-$platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion\lib\$framework\"
 $platformOutDir = Join-Path $solutionOutDir 'platform'
+$platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion\lib\$framework\"
 
 Remove-Item -Path $platformOutDir -Recurse -ErrorAction SilentlyContinue
 Copy-Item -Path $platformPackage -Destination $platformOutDir -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
@@ -77,7 +77,7 @@ $platformReferences = Join-Path $platformPackage "InfinniPlatform.references"
 if (Test-Path $platformReferences)
 {
     Get-Content $platformReferences | Foreach-Object {
-        if ($_ -match '^.*?\\lib(\\.*?){0,1}\\(?<path>.*?)$')
+        if ($_ -match '^.*?\\(lib|plugin)(\\.*?){0,1}\\(?<path>.*?)$')
         {
             $item = Join-Path $platformOutDir $matches.path
 
@@ -97,15 +97,6 @@ if (Test-Path $platformReferences)
 
 $serviceHostPackage = Join-Path $solutionPackagesDir "InfinniPlatform.ServiceHost.$platformVersion\lib\$framework\*"
 Copy-Item -Path $serviceHostPackage -Destination $solutionOutDir -Recurse -ErrorAction SilentlyContinue
-
-# Copy InfinniPlatform plugins files
-
-$plugins = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@*[contains(.,'InfinniPlatform.Plugins')]]").Node.id
-
-$plugins | Foreach-Object {
-    $pluginsPackage = Join-Path $solutionPackagesDir "$_.$platformVersion\tools\$framework\*"
-    Copy-Item -Path $pluginsPackage -Destination $platformOutDir -Recurse -ErrorAction SilentlyContinue
-}
 
 # Save installation number
 
