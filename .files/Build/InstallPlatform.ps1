@@ -54,18 +54,6 @@ $platformVersionMarker = Join-Path $solutionOutDir '.platformVersion'
 
 $prevPlatformVersion = Get-Content -Path $platformVersionMarker -ErrorAction SilentlyContinue
 
-# Copy InfinniPlatform plugins files
-
-$pluginIds = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@*[contains(.,'InfinniPlatform.Plugins')]]").Node.id
-
-$solutionPackagesDir = Join-Path $solutionDir 'packages'
-$platformOutDir = Join-Path $solutionOutDir 'platform'
-
-$pluginIds | Foreach-Object {
-    $pluginsPackage = Join-Path $solutionPackagesDir "$_.$platformVersion\tools\$framework\*"
-    Copy-Item -Path $pluginsPackage -Destination $platformOutDir -Recurse -ErrorAction SilentlyContinue
-}
-
 if ($prevPlatformVersion -match $platformVersion)
 {
     return
@@ -73,11 +61,13 @@ if ($prevPlatformVersion -match $platformVersion)
 
 # Install InfinniPlatform package
 
+$solutionPackagesDir = Join-Path $solutionDir 'packages'
 & "$nugetPath" install 'InfinniPlatform' -Version $platformVersion -OutputDirectory $solutionPackagesDir -NonInteractive -Prerelease
 
 # Copy InfinniPlatform files
 
 $platformPackage = Join-Path $solutionPackagesDir "InfinniPlatform.$platformVersion\lib\$framework\"
+$platformOutDir = Join-Path $solutionOutDir 'platform'
 
 Remove-Item -Path $platformOutDir -Recurse -ErrorAction SilentlyContinue
 Copy-Item -Path $platformPackage -Destination $platformOutDir -Exclude @( '*.ps1', '*references' ) -Recurse -ErrorAction SilentlyContinue
@@ -107,6 +97,15 @@ if (Test-Path $platformReferences)
 
 $serviceHostPackage = Join-Path $solutionPackagesDir "InfinniPlatform.ServiceHost.$platformVersion\lib\$framework\*"
 Copy-Item -Path $serviceHostPackage -Destination $solutionOutDir -Recurse -ErrorAction SilentlyContinue
+
+# Copy InfinniPlatform plugins files
+
+$plugins = (Select-Xml -Path $solutionPackagesConfig -XPath "//package[@*[contains(.,'InfinniPlatform.Plugins')]]").Node.id
+
+$plugins | Foreach-Object {
+    $pluginsPackage = Join-Path $solutionPackagesDir "$_.$platformVersion\tools\$framework\*"
+    Copy-Item -Path $pluginsPackage -Destination $platformOutDir -Recurse -ErrorAction SilentlyContinue
+}
 
 # Save installation number
 
