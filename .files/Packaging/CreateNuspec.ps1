@@ -133,10 +133,13 @@
 
 		# Add platform config-file
 
-		$projectNuspec = $projectNuspec + "        <file target=""lib\$framework"" src=""AppExtension.json"" />`r`n"
+		$projectNuspec = $projectNuspec + "        <file target=""lib\$framework"" src=""AppExtension.json"" />`r`n" + `
+			"        <file target=""lib\$framework\$projectName.references"" src=""$projectName.references"" />`r`n"
 
-		$projectNuspec = $projectNuspec + `
-			"        <file target=""lib\$framework\$projectName.references"" src=""$projectName.references"" />`r`n" + `
+		# Add content files
+
+		$projectNuspec = $projectNuspec +
+			"        <file target=""content"" src=""content\**\*.*"" />`r`n" + `			
 			"    </files>`r`n" + `
 			"</package>"
 
