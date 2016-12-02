@@ -60,6 +60,7 @@
 			"        <owners>Infinnity Solutions</owners>`r`n" + `
 			"        <requireLicenseAcceptance>false</requireLicenseAcceptance>`r`n" + `
 			"        <description>Commit $commitHash</description>`r`n" + `
+			"        <iconUrl>http://infinnity.ru/img/favicon.png</iconUrl>`r`n" + `
 			"        <copyright>Infinnity Solutions $(Get-Date -Format yyyy)</copyright>`r`n" + `
 			"        <dependencies>`r`n"
 
