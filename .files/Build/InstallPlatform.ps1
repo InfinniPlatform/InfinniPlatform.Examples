@@ -5,13 +5,13 @@
 param
 (
     [Parameter(HelpMessage = "Name of the solution.")]
-    [String] $solutionName,
+    [String] $solutionName = 'InfinniPlatform.Northwind',
 
     [Parameter(HelpMessage = "Path to the solution directory.")]
-    [String] $solutionDir,
+    [String] $solutionDir = '.',
 
     [Parameter(HelpMessage = "Path to the solution output directory.")]
-    [String] $solutionOutDir,
+    [String] $solutionOutDir = 'Assemblies',
 
     [Parameter(HelpMessage = "Active solution configuration.")]
     [String] $solutionConfig = 'Debug',
