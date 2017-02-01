@@ -1,23 +1,16 @@
 ﻿{
-  /* Настройки приложения */
+  "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniPlatform/master/Files/Config/Schema/Common.json",
   "app": {
-    /* Уникальное имя приложения, используется для изоляции данных между приложениями (по умолчанию - 'InfinniPlatform') */
     "Name": "Northwind"
   },
-  /* Настройки наблюдателя */
   "watcher": {
-    /* Директория источника метаданных */
     "SourceDirectory": "../InfinniPlatform.Northwind/content",
-    /* Директория для синхронизации */
     "DestinationDirectory": "content",
-    /* Расширения синхронизируемых файлов */
     "WatchingFileExtensions": [
       ".json"
     ]
   },
   "cache": {
-    /* Тип кэша для приложения (возможные варианты: 'Memory', 'Shared', по умолчанию - 'Memory') */
-    /* При развертывании приложения в промышленной инфраструктуре рекомендуемое значение - 'Shared' */
     "Type": "Memory"
   }
 }
