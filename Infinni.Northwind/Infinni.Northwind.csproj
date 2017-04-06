@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="PrintView\PrintViewExample.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.files\Config\AppExtension.Debug.json" Link="AppConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="InfinniPlatform.Caching" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.Log4NetAdapter" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.MessageQueue" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.PrintView" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.Scheduler" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.Sdk" Version="2.0.0.53-netcore" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>

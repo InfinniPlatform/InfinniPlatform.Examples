@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinniPlatform.Northwind", "InfinniPlatform.Northwind\InfinniPlatform.Northwind.csproj", "{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D}"
 EndProject
@@ -29,6 +29,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{DA3C3A18
 		.files\Build\InstallPlatform.ps1 = .files\Build\InstallPlatform.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infinni.Northwind", "Infinni.Northwind\Infinni.Northwind.csproj", "{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infinni.Demo", "Infinni.Demo\Infinni.Demo.csproj", "{4E0699F9-F0F0-4160-9109-F5E0BBC29305}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NET Framework", "NET Framework", "{C30E4033-94B4-490D-BBD3-0C890B2361CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NET Core", "NET Core", "{9114D7AD-548D-4710-AA86-7F83920ACC69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,13 +51,25 @@ Global
 		{3F0B5B14-FD22-4649-873D-6764649B0370}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F0B5B14-FD22-4649-873D-6764649B0370}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F0B5B14-FD22-4649-873D-6764649B0370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E0699F9-F0F0-4160-9109-F5E0BBC29305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E0699F9-F0F0-4160-9109-F5E0BBC29305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E0699F9-F0F0-4160-9109-F5E0BBC29305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E0699F9-F0F0-4160-9109-F5E0BBC29305}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{94BB0025-6DAD-4EA7-BEFF-E99AD72DCC7D} = {C30E4033-94B4-490D-BBD3-0C890B2361CA}
+		{3F0B5B14-FD22-4649-873D-6764649B0370} = {C30E4033-94B4-490D-BBD3-0C890B2361CA}
 		{8440D466-6F9B-4068-A4F0-872D3A2BB376} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
 		{893DD540-B16A-473C-8813-DA6C8242C7FE} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
 		{DA3C3A18-81C1-41D8-A4F8-4D70BD32D067} = {CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}
+		{3FEE9A6B-9195-4442-8CBB-FB64A13FF827} = {9114D7AD-548D-4710-AA86-7F83920ACC69}
+		{4E0699F9-F0F0-4160-9109-F5E0BBC29305} = {9114D7AD-548D-4710-AA86-7F83920ACC69}
 	EndGlobalSection
 EndGlobal
