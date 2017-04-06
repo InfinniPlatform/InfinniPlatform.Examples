@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
@@ -9,7 +9,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.Log4NetAdapter" Version="2.0.0.53-netcore" />
+    <PackageReference Include="InfinniPlatform.Sdk" Version="2.0.0.53-netcore" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="AppConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

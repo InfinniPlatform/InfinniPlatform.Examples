@@ -3,20 +3,23 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:62223/",
+      "applicationUrl": "http://localhost:9900/",
       "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
+      "workingDirectory": "bin\\Debug\\netcoreapp1.1",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Infinni.Demo": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "workingDirectory": "bin\\Debug\\netcoreapp1.1",
+      "applicationUrl": "http://localhost:9900"
     }
   }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 
 using InfinniPlatform.Extensions;
-using InfinniPlatform.Sdk.Hosting;
 using InfinniPlatform.Sdk.IoC;
 
 using Microsoft.AspNetCore.Builder;
