@@ -13,12 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\.files\Config\AppExtension.Debug.json" Link="AppConfig.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="InfinniPlatform.Caching" Version="2.0.0.53-netcore" />
     <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.53-netcore" />
     <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.53-netcore" />
@@ -28,6 +22,12 @@
     <PackageReference Include="InfinniPlatform.Scheduler" Version="2.0.0.53-netcore" />
     <PackageReference Include="InfinniPlatform.Sdk" Version="2.0.0.53-netcore" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="AppConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 
 using InfinniPlatform.Extensions;
+using InfinniPlatform.Sdk.Hosting;
 using InfinniPlatform.Sdk.IoC;
 
 using Microsoft.AspNetCore.Builder;
@@ -14,12 +15,12 @@ namespace Infinni.Northwind
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var serviceProvider = services.AddCaching()
-                                            .AddDocumentStorage()
-                                            .AddLog4NetAdapter()
-                                            .AddMessageQueue()
-                                            .AddScheduler()
-                                            .AddPrintView()
-                                            .BuildProvider();
+                                          .AddDocumentStorage()
+                                          .AddLog4NetAdapter()
+                                          .AddMessageQueue()
+                                          .AddScheduler()
+                                          .AddPrintView()
+                                          .BuildProvider();
 
             return serviceProvider;
         }

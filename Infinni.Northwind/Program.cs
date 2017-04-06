@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 
 namespace Infinni.Northwind
 {
@@ -9,7 +7,6 @@ namespace Infinni.Northwind
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                    .UseUrls("http://localhost:9900")
                     .UseKestrel()
                     .UseStartup<Startup>()
                     .Build();

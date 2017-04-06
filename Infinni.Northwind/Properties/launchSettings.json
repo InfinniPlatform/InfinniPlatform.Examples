@@ -16,7 +16,9 @@
       }
     },
     "Infinni.Northwind": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "workingDirectory": "bin\\Debug\\netcoreapp1.1",
+      "applicationUrl": "http://localhost:9900"
     }
   }
 }
