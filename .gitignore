@@ -240,5 +240,4 @@ _Pvt_Extensions
 .fake/
 
 # InfinniPlatform
-# TODO deal with platform metadata
-**/content/metadata/Documents/UserStore.json
+**/logs/*
