@@ -1,2 +1,2 @@
-dotnet restore -r win10-x64 & dotnet publish -r win10-x64
-dotnet restore -r ubuntu.16.04-x64 & dotnet publish -r ubuntu.16.04-x64
+dotnet restore -r win81-x64 & dotnet publish --framework netcoreapp1.1 -c Release -r win81-x64 -o bin/win
+dotnet restore -r ubuntu.14.04-x64 & dotnet publish --framework netcoreapp1.1 -c Release -r ubuntu.14.04-x64 -o bin/ubuntu
