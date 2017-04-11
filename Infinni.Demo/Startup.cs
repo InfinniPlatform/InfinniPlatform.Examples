@@ -29,6 +29,7 @@ namespace Infinni.Demo
         {
             var serviceProvider = services.AddAuth()
                                           .AddDocumentStorage()
+                                          .AddBlobStorage()
                                           .AddLog4NetAdapter()
                                           .BuildProvider();
 

@@ -1,222 +1,38 @@
 ﻿{
   "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/View/View.json",
   "Name": "CatalogGoodsView",
-  "OnLoaded": "{context.controls.CatalogGoodsTreeView.expand('ROOT_CATEGORY')}",
   "DataSources": [
     {
       "DocumentDataSource": {
-        "Name": "CatalogGoodsDataSource",
-        "ConfigId": "SchoolStore",
-        "DocumentId": "DirectoryCategories",
-        "PageSize": 1000
-      }
-    },
-    {
-      "DocumentDataSource": {
-        "Name": "ServiceProviderDataSource",
-        "ConfigId": "SchoolStore",
-        "DocumentId": "ServiceProvider",
+        "Name": "ShippersDataSource",
+        "ConfigId": "Northwind",
+        "DocumentId": "Shippers",
         "IsLazy": false,
-        "PageSize": 1000
+        "PageSize": 10
       }
     }
   ],
   "Items": [
     {
-      "GridPanel": {
-        "Name": "MainGridPanel",
-        "Items": [
+      "DataGrid": {
+        "Columns": [
           {
-            "Cell": {
-              "ColumnSpan": 6,
-              "Items": [
-                {
-                  "ScrollPanel": {
-                    "Items": [
-                      {
-                        "StackPanel": {
-                          "Orientation": "Horizontal",
-                          "ViewMode": "FormGroup",
-                          "Items": [
-                            {
-                              "Button": {
-                                "Name": "AddButton",
-                                "ContentTemplate": {
-                                  "Icon": {
-                                    "Name": "AddButtonPlusIcon",
-                                    "Value": "plus"
-                                  }
-                                },
-                                "Enabled": {
-                                  "Source": "CatalogGoodsDataSource",
-                                  "Property": "$.ParentId",
-                                  "Mode": "ToElement",
-                                  "Converter": {
-                                    "ToElement": "{return !args.value || args.value === 'ROOT_CATEGORY'; }"
-                                  }
-                                },
-                                "Action": {
-                                  "AddAction": {
-                                    "DestinationValue": {
-                                      "Source": "CatalogGoodsDataSource"
-                                    },
-                                    "SourceValue": {
-                                      "Source": "CatalogGoodsDataSource"
-                                    },
-                                    "LinkView": {
-                                      "AutoView": {
-                                        "Path": "CatalogGoods/CategoryGoodsEditView",
-                                        "OpenMode": "Container",
-                                        "Container": "CatalogGoodsViewContent",
-                                        "Parameters": [
-                                          {
-                                            "Name": "CategoryType",
-                                            "Value": {
-                                              "Source": "CatalogGoodsDataSource",
-                                              "Property": "$"
-                                            }
-                                          },
-                                          {
-                                            "Name": "Type",
-                                            "Value": "add"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "Button": {
-                                "Name": "EditButton",
-                                "ContentTemplate": {
-                                  "Icon": {
-                                    "Name": "EditButtonPencilIcon",
-                                    "Value": "pencil"
-                                  }
-                                },
-                                "Enabled": {
-                                  "Source": "CatalogGoodsDataSource",
-                                  "Property": "$.ParentId",
-                                  "Mode": "ToElement",
-                                  "Converter": {
-                                    "ToElement": "{return args.value; }"
-                                  }
-                                },
-                                "Action": {
-                                  "EditAction": {
-                                    "DestinationValue": {
-                                      "Source": "CatalogGoodsDataSource",
-                                      "Property": "$"
-                                    },
-                                    "SourceValue": {
-                                      "Source": "CatalogGoodsDataSource"
-                                    },
-                                    "LinkView": {
-                                      "AutoView": {
-                                        "Path": "CatalogGoods/CategoryGoodsEditView",
-                                        "OpenMode": "Container",
-                                        "Container": "CatalogGoodsViewContent",
-                                        "Parameters": [
-                                          {
-                                            "Name": "CategoryType",
-                                            "Value": {
-                                              "Source": "CatalogGoodsDataSource",
-                                              "Property": "$"
-                                            }
-                                          },
-                                          {
-                                            "Name": "Type",
-                                            "Value": "edit"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "Button": {
-                                "Name": "RemoveButton",
-                                "Enabled": {
-                                  "Source": "CatalogGoodsDataSource",
-                                  "Property": "$.ParentId",
-                                  "Mode": "ToElement",
-                                  "Converter": {
-                                    "ToElement": "{return args.value; }"
-                                  }
-                                },
-                                "ContentTemplate": {
-                                  "Icon": {
-                                    "Name": "RemoveButtonRemoveIcon",
-                                    "Value": "remove"
-                                  }
-                                },
-                                "OnClick": "{SchoolStore.scripts.catalogGoodsCatalogGoodsViewDeleteButtonOnClick(context, args);}"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "StackPanel": {
-                          "Items": [
-                            {
-                              "TreeView": {
-                                "Name": "CatalogGoodsTreeView",
-                                "KeyProperty": "_id",
-                                "ParentProperty": "ParentId",
-                                "ItemTemplate": {
-                                  "StackPanel": {
-                                    "Orientation": "Horizontal",
-                                    "Items": [
-                                      {
-                                        "Label": {
-                                          "Name": "CatalogGoodsNameLabel",
-                                          "Text": {
-                                            "Source": "CatalogGoodsDataSource",
-                                            "Property": "#.Name"
-                                          }
-                                        }
-                                      }
-                                    ]
-                                  }
-                                },
-                                "Items": {
-                                  "Source": "CatalogGoodsDataSource"
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
+            "Header": "CompanyName",
+            "CellProperty": "CompanyName",
+            "Sortable": true,
+            "SortedDefault": "asc",
+            "SortFunction": "{ console.log(args.sortDirection) }"
           },
           {
-            "Cell": {
-              "ColumnSpan": 6,
-              "Items": [
-                {
-                  "ScrollPanel": {
-                    "Items": [
-                      {
-                        "ViewPanel": {
-                          "Name": "CatalogGoodsViewContent"
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
+            "Header": "Phone",
+            "CellProperty": "Phone"
           }
-        ]
+        ],
+        "VerticalAlignment": "Stretch",
+        "ShowSelectors": false,
+        "Items": {
+          "Source": "ShippersDataSource"
+        }
       }
     }
   ]

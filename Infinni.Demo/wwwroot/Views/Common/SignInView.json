@@ -40,16 +40,10 @@
                             {
                               "Label": {
                                 "Name": "HeadLabel",
-                                "Text": "School Store"
+                                "Text": "Infinni.Demo"
                               }
                             }
                           ]
-                        }
-                      },
-                      {
-                        "Label": {
-                          "Name": "HeadDescriptionLabel",
-                          "Text": "Административная панель"
                         }
                       }
                     ]
