@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/View/View.json",
+  "Name": "HomePage",
+  "Parameters": [
+    {
+      "Name": "EmptyParam"
+    }
+  ],
+  "Items": [
+    {
+      "MenuBar": {
+        "Name": "HomePageMenuBar",
+        "Items": [
+          {
+            "Icon": {
+              "Name": "BookIcon",
+              "Value": "book"
+            }
+          },
+          {
+            "Label": {
+              "Name": "ConfigNameLabel",
+              "Text": "School Store"
+            }
+          },
+          {
+            "Button": {
+              "Name": "ServiceProvidersNameButton",
+              "Text": "Поставщики",
+              "Action": {
+                "RouteToAction": {
+                  "Name": "ServiceProvidersRoute"
+                }
+              }
+            }
+          },
+          {
+            "Button": {
+              "Name": "CatalogGoodsNameButton",
+              "Text": "Каталог услуг",
+              "Action": {
+                "RouteToAction": {
+                  "Name": "CatalogGoodsRoute"
+                }
+              }
+            }
+          },
+          {
+            "PopupButton": {
+              "Name": "UserNamePopupButton",
+              "HorizontalAlignment": "Right",
+              "ToolTip": {
+                "Label": {
+                  "Name": "UserNameToolTipLabel",
+                  "Text": {
+                    "Source": "EmptyParam",
+                    "Mode": "ToElement",
+                    "Converter": {
+                      "ToElement": "{return SchoolStore.currentUser.UserName;}"
+                    }
+                  }
+                }
+              },
+              "ContentTemplate": {
+                "Icon": {
+                  "Name": "UserNamePopupButtonUserIcon",
+                  "Value": "user"
+                }
+              },
+              "Items": [
+                {
+                  "Button": {
+                    "Name": "SignOutButton",
+                    "Text": "Выйти",
+                    "OnClick": "SS:SignOutButtonOnClick"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "ViewPanel": {
+        "Name": "Content"
+      }
+    }
+  ]
+}

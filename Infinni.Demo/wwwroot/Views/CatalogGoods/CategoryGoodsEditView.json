@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/View/View.json",
+  "Name": "CategoryGoodsEditView",
+  "OnLoaded": "{SchoolStore.scripts.catalogGoodsCategoryGoodsEditViewOnLoaded(context, args);}",
+  "DataSources": [
+    {
+      "DocumentDataSource": {
+        "Name": "CatalogGoodsDataSource",
+        "ConfigId": "SchoolStore",
+        "DocumentId": "DirectoryCategories"     
+      }
+    },
+    {
+      "RestDataSource": {
+        "Name": "AddCategoryDataSource",
+        "SettingParams": {
+          "Method": "post",
+          "Params": { },
+          "Path": "/HttpServices/DirectoryCategoriesHttpService/AddCategoryOrSubCategory",
+          "Data": { }
+        },
+        "IsLazy": false
+      }
+    }
+  ],
+  "Parameters": [
+    {
+      "Name": "CategoryType"
+    },
+    {
+      "Name": "Type"
+    }
+  ],
+  "Items": [
+    {
+      "StackPanel": {
+        "Items": [
+          {
+            "Label": {
+              "Name": "CategoryNameLabel",
+              "Text": {
+                "Source": "Type",
+                "Mode": "ToElement",
+                "Converter": {
+                  "ToElement": "{return SchoolStore.scripts.catalogGoodsCategoryGoodsEditViewConverterLabelText(context, args);}"
+                }
+              }
+            }
+          },
+          {
+            "StackPanel": {
+              "ItemTemplate": {
+                "TextBox": {
+                  "Name": "NameCategoryTextBox",
+                  "LabelText": "Название",
+                  "LabelFloating": true,
+                  "Value": {
+                    "Source": "CatalogGoodsDataSource",
+                    "Property": "#.Name"
+                  }
+                }
+              },
+              "Items": {
+                "Source": "CatalogGoodsDataSource",
+                "Property": ""
+              }
+
+            }
+          },
+          {
+            "StackPanel": {
+              "ViewMode": "FormGroup",
+              "Items": [
+                {
+                  "Button": {
+                    "Name": "AddMoreButton",
+                    "Text": "Добавить ещё",
+                    "ViewMode": "link",
+                    "OnClick": "{context.dataSources.CatalogGoodsDataSource.createItem(); context.dataSources.CatalogGoodsDataSource.setProperty('$.ParentId', context.parameters.CategoryType.getValue()._id)}",
+                    "Visible": {
+                      "Source": "Type",
+                      "Mode": "ToElement",
+                      "Converter": {
+                        "ToElement": "{return args.value === 'add';}"
+                      }
+                    }
+                  }
+                },
+                {
+                  "StackPanel": {
+                    "Orientation": "Horizontal",
+                    "ViewMode": "FormGroup",
+                    "Items": [
+                      {
+                        "Button": {
+                          "Name": "SaveButton",
+                          "Text": "Сохранить",
+                          "OnClick": "{ SchoolStore.scripts.catalogGoodsCategoryGoodsEditViewSaveButtonOnClick(context, args);}"
+                        }
+                      },
+                      {
+                        "Button": {
+                          "Name": "CancelButton",
+                          "Text": "Отмена",
+                          "Action": {
+                            "CancelAction": { }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

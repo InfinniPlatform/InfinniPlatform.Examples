@@ -5,6 +5,72 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\css\app.css" />
+    <Content Include="wwwroot\css\app.min.css" />
+    <Content Include="wwwroot\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="wwwroot\css\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\css\infinni-ui\main.css" />
+    <Content Include="wwwroot\css\infinni-ui\vendor.css" />
+    <Content Include="wwwroot\img\default_photo.png" />
+    <Content Include="wwwroot\js\app.js" />
+    <Content Include="wwwroot\js\app.min.js" />
+    <Content Include="wwwroot\js\infinni-ui\platform.js" />
+    <Content Include="wwwroot\js\infinni-ui\platform.min.js" />
+    <Content Include="wwwroot\js\infinni-ui\templates.js" />
+    <Content Include="wwwroot\js\infinni-ui\vendor.js" />
+    <Content Include="wwwroot\metadata\Views\CatalogGoods\CatalogGoodsView.json" />
+    <Content Include="wwwroot\metadata\Views\CatalogGoods\CategoryGoodsEditView.json" />
+    <Content Include="wwwroot\metadata\Views\Common\HomePage.json" />
+    <Content Include="wwwroot\metadata\Views\Common\SignInView.json" />
+    <Content Include="wwwroot\metadata\Views\ServiceProvider\ServiceProviderEditView.json" />
+    <Content Include="wwwroot\metadata\Views\ServiceProvider\ServiceProviderPreview.json" />
+    <Content Include="wwwroot\metadata\Views\ServiceProvider\ServiceProviderView.json" />
+    <Content Include="wwwroot\metadata\Views\StartPage.json" />
+    <Content Include="wwwroot\test\unit\app.test.js" />
+    <Content Include="wwwroot\test\unit\vendor\chai.js" />
+    <Content Include="wwwroot\test\unit\vendor\mocha-teamcity-phantomjs.js" />
+    <Content Include="wwwroot\test\unit\vendor\mocha.css" />
+    <Content Include="wwwroot\test\unit\vendor\mocha.js" />
+    <Content Include="wwwroot\test\unit\vendor\sinon.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Auth.html" />
+    <None Include="wwwroot\config.js" />
+    <None Include="wwwroot\css\app.css" />
+    <None Include="wwwroot\css\app.min.css" />
+    <None Include="wwwroot\css\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\css\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\css\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\css\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\css\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\css\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\css\infinni-ui\main.css" />
+    <None Include="wwwroot\css\infinni-ui\vendor.css" />
+    <None Include="wwwroot\img\default_photo.png" />
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\js\app.js" />
+    <None Include="wwwroot\js\app.min.js" />
+    <None Include="wwwroot\js\infinni-ui\platform.js" />
+    <None Include="wwwroot\js\infinni-ui\platform.min.js" />
+    <None Include="wwwroot\js\infinni-ui\templates.js" />
+    <None Include="wwwroot\js\infinni-ui\vendor.js" />
+    <None Include="wwwroot\main.js" />
+    <None Include="wwwroot\routes.js" />
+    <None Include="wwwroot\test.html" />
+    <None Include="wwwroot\test\unit\app.test.js" />
+    <None Include="wwwroot\test\unit\vendor\chai.js" />
+    <None Include="wwwroot\test\unit\vendor\mocha-teamcity-phantomjs.js" />
+    <None Include="wwwroot\test\unit\vendor\mocha.css" />
+    <None Include="wwwroot\test\unit\vendor\mocha.js" />
+    <None Include="wwwroot\test\unit\vendor\sinon.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="InfinniPlatform.Auth.Internal" Version="2.0.0.59-netcore" />
     <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.59-netcore" />
     <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.59-netcore" />
@@ -24,9 +90,10 @@
     <None Update="AppLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="content\www\Auth.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
+  
+  <!--<ItemGroup>
+    <Content Include="content\**\*" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>-->
 
 </Project>

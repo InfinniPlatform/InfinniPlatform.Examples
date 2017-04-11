@@ -1,0 +1,141 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/View/View.json",
+  "Name": "SignInView",
+  "DataSources": [
+    {
+      "ObjectDataSource": {
+        "Name": "MainDataSource",
+        "OnPropertyChanged": "{SchoolStore.scripts.signInViewMainDataSourceOnPropertyChanged(context, args);}",
+        "Items": [ {} ]
+      }
+    }
+  ],
+  "Items": [
+    {
+      "GridPanel": {
+        "Name": "MainGridPanel",
+        "Items": [
+          {
+            "Cell": {
+              "ColumnSpan": 4
+            }
+          },
+          {
+            "Cell": {
+              "ColumnSpan": 4,
+              "Items": [
+                {
+                  "StackPanel": {
+                    "Items": [
+                      {
+                        "StackPanel": {
+                          "Orientation": "Horizontal",
+                          "Items": [
+                            {
+                              "Icon": {
+                                "Name": "HeadIcon",
+                                "Value": "book"
+                              }
+                            },
+                            {
+                              "Label": {
+                                "Name": "HeadLabel",
+                                "Text": "School Store"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "Label": {
+                          "Name": "HeadDescriptionLabel",
+                          "Text": "Административная панель"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Cell": {
+              "ColumnSpan": 4
+            }
+          },
+          {
+            "Cell": {
+              "ColumnSpan": 4
+            }
+          },
+          {
+            "Cell": {
+              "ColumnSpan": 4,
+              "Items": [
+                {
+                  "Panel": {
+                    "Name": "SignInPanel",
+                    "HeaderTemplate": {
+                      "Label": {
+                        "Name": "SignInLabel",
+                        "Text": "Вход в систему"
+                      }
+                    },
+                    "Items": [
+                      {
+                        "TextBox": {
+                          "Name": "LoginTextBox",
+                          "LabelText": "Логин",
+                          "LabelFloating": true,
+                          "Value": {
+                            "Source": "MainDataSource",
+                            "Property": "$.username"
+                          }
+                        }
+                      },
+                      {
+                        "PasswordBox": {
+                          "Name": "PasswordPasswordBox",
+                          "LabelText": "Пароль",
+                          "LabelFloating": true,
+                          "Value": {
+                            "Source": "MainDataSource",
+                            "Property": "$.password"
+                          }
+                        }
+                      },
+                      {
+                        "CheckBox": {
+                          "Name": "RememberPasswordCheckBox",
+                          "Text": "Запомнить пароль",
+                          "Value": {
+                            "Source": "MainDataSource",
+                            "Property": "$.passwordRemember"
+                          }
+                        }
+                      },
+                      {
+                        "Button": {
+                          "Name": "SignInButton",
+                          "Text": "Войти",
+                          "HorizontalAlignment": "Right",
+                          "Enabled": false,
+                          "OnClick": "SS:SignInButtonOnClick"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Cell": {
+              "ColumnSpan": 4
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

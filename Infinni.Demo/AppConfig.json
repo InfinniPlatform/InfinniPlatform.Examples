@@ -51,17 +51,13 @@
     "HtmlToPdfUtilArguments": "",
     "HtmlToPdfTemp": ""
   },
-  "metadata": {
-    "DocumentsPath": "content/metadata/Documents",
-    "PrintViewsPath": "content/metadata/PrintViews"
-  },
   "scheduler": {
     "ExpireHistoryAfter": null
   },
   "staticContent": {
     "StaticFilesMapping": {
-      "/metadata": "content/metadata",
-      "/": "content/www"
+      "/Views": "wwwroot/Views",
+      "/": "wwwroot"
     },
     "EmbeddedResourceMapping": {},
     "RazorViewsPath": "content/www/RazorViews",

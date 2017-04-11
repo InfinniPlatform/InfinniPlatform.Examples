@@ -1,0 +1,305 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/View/View.json",
+  "Name": "ServiceProviderView",
+  "Text": "Список поставщиков",
+  "DataSources": [
+    {
+      "DocumentDataSource": {
+        "Name": "ServiceProviderDataSource",
+        "DocumentId": "ServiceProvider",
+        "NeedTotalCount": true,
+        "PageSize": 20,
+        "Order": "desc(_header._created)"
+      }
+    },
+    {
+      "DocumentDataSource": {
+        "Name": "CityDataSource",
+        "DocumentId": "City",
+        "Filter": "regex(Name,'^<%Param%>',IgnoreCase)",
+        "Order": "Name",
+        "FilterParams": {
+          "Param": {
+            "Source": "CityComboBox",
+            "Property": "autocompleteValue"
+          }
+        }
+      }
+    }
+  ],
+  "Items": [
+    {
+      "ScrollPanel": {
+        "Items": [
+          {
+            "Panel": {
+              "Name": "MainPanel",
+              "HeaderTemplate": {
+                "GridPanel": {
+                  "Items": [
+                    {
+                      "Cell": {
+                        "ColumnSpan": 6,
+                        "Items": [
+                          {
+                            "Label": {
+                              "Name": "ProvidersLabel",
+                              "Text": "Поставщики"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "Cell": {
+                        "ColumnSpan": 6,
+                        "Items": [
+                          {
+                            "Button": {
+                              "Name": "CreateProviderButton",
+                              "HorizontalAlignment": "Right",
+                              "ContentTemplate": {
+                                "StackPanel": {
+                                  "ViewMode": "FormGroup",
+                                  "Orientation": "Horizontal",
+                                  "Items": [
+                                    {
+                                      "Icon": {
+                                        "Name": "CreateProviderButtonPlusIcon",
+                                        "Value": "plus"
+                                      }
+                                    },
+                                    {
+                                      "Label": {
+                                        "Name": "CreateProviderButtonTextLabel",
+                                        "Text": "Создать",
+                                        "HorizontalAlignment": "Right"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "Action": {
+                                "RouteToAction": {
+                                  "Name": "ServiceProviderCreateRoute"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "Items": [
+                {
+                  "GridPanel": {
+                    "Items": [
+                      {
+                        "Cell": {
+                          "ColumnSpan": 6,
+                          "Items": [
+                            {
+                              "Label": {
+                                "Name": "CityFilterLabel",
+                                "Text": "Город"
+                              }
+                            },
+                            {
+                              "ComboBox": {
+                                "Name": "CityComboBox",
+                                "ItemFormat": "{Name}",
+                                "ValueFormat": "{Name}",
+                                "Autocomplete": true,
+                                "AutocompleteProperty": "Name",
+                                "Items": {
+                                  "Source": "CityDataSource"
+                                },
+                                "Value": {
+                                  "Source": "ServiceProviderDataSource",
+                                  "Property": "$.CityId",
+                                  "Mode": "ToSource",
+                                  "Converter": {
+                                    "ToSource": "{return args.value && args.value._id;}"
+                                  }
+                                },
+                                "OnValueChanged": "SS:CityComboBoxOnValueChanged"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "Cell": {
+                          "ColumnSpan": 6,
+                          "Items": [
+                            {
+                              "StackPanel": {
+                                "Items": [
+                                  {
+                                    "Label": {
+                                      "Name": "OrderLabel",
+                                      "Text": "Сортировка"
+                                    }
+                                  },
+                                  {
+                                    "StackPanel": {
+                                      "ViewMode": "FormGroup",
+                                      "Orientation": "Horizontal",
+                                      "Items": [
+                                        {
+                                          "Button": {
+                                            "Name": "DateOfCreationButton",
+                                            "Background": "Primary1",
+                                            "Text": "Дата создания",
+                                            "OnClick": "SS:SortSuppliersOnClick",
+                                            "Tag": "DateOfCreation"
+                                          }
+                                        },
+                                        {
+                                          "Button": {
+                                            "Name": "AlphabetButton",
+                                            "Text": "Алфавит",
+                                            "OnClick": "SS:SortSuppliersOnClick",
+                                            "Tag": "Alphabet"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "Cell": {
+                          "ColumnSpan": 12,
+                          "Items": {
+                            "Source": "ServiceProviderDataSource",
+                            "Property": ""
+                          },
+                          "ItemTemplate": {
+                            "StackPanel": {
+                              "Orientation": "Horizontal",
+                              "ViewMode": "FormGroup",
+                              "Style": "schoolStore-provider",
+                              "Items": [
+                                {
+                                  "ImageBox": {
+                                    "Name": "ProviderPhotoImageBox",
+                                    "Style": "schoolStore-provider-photo",
+                                    "Enabled": false,
+                                    "AcceptTypes": [
+                                      "image/jpeg",
+                                      "image/png"
+                                    ],
+                                    "MaxSize": 1048576,
+                                    "Value": {
+                                      "Source": "ServiceProviderDataSource",
+                                      "Property": "#.Photo"
+                                    },
+                                    "Tag": {
+                                      "Source": "ServiceProviderDataSource",
+                                      "Property": "#"
+                                    },
+                                    "OnClick": "SS:ImageBoxOnClick"
+                                  }
+                                },
+                                {
+                                  "StackPanel": {
+                                    "Items": [
+                                      {
+                                        "Button": {
+                                          "Name": "ServiceProviderNameButton",
+                                          "Text": {
+                                            "Source": "ServiceProviderDataSource",
+                                            "Property": "#.Name"
+                                          },
+                                          "Style": "schoolStore-provider-name",
+                                          "ViewMode": "link",
+                                          "Action": {
+                                            "RouteToAction": {
+                                              "Name": "ServiceProviderPreviewRoute",
+                                              "Params": [
+                                                {
+                                                  "Name": "Id",
+                                                  "Value": {
+                                                    "Source": "ServiceProviderDataSource",
+                                                    "Property": "#._id"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "Label": {
+                                          "Name": "CityNameLabel",
+                                          "DisplayFormat": "Город: {Name}",
+                                          "Value": {
+                                            "Source": "ServiceProviderDataSource",
+                                            "Property": "#.City.Name"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "Label": {
+                                          "Name": "ProviderEmailLabel",
+                                          "DisplayFormat": "E-mail: {Email}",
+                                          "Value": {
+                                            "Source": "ServiceProviderDataSource",
+                                            "Property": "#.Email"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "Label": {
+                                          "Name": "ProviderPhoneLabel",
+                                          "DisplayFormat": "Телефон: {Phone}",
+                                          "Value": {
+                                            "Source": "ServiceProviderDataSource",
+                                            "Property": "#.Phone"
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Cell": {
+                          "ColumnSpan": 12,
+                          "Items": [
+                            {
+                              "DataNavigation": {
+                                "Name": "MainDataNavigation",
+                                "AvailablePageSizes": [
+                                  20,
+                                  50,
+                                  100
+                                ],
+                                "DataSource": "ServiceProviderDataSource"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

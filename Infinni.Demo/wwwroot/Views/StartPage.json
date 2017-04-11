@@ -1,0 +1,6 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/View/View.json",
+  "Name": "StartPage",
+  "OnLoaded": "SS:OnLoaded",
+  "Items": []
+}

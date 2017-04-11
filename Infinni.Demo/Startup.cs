@@ -38,7 +38,6 @@ namespace Infinni.Demo
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IContainerResolver resolver)
         {
             loggerFactory.AddConsole();
-            app.UseStaticFiles();
 
             app.UseInfinniMiddlewares(resolver);
         }
