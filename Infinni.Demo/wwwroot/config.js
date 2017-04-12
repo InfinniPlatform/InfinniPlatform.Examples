@@ -5,14 +5,9 @@ window.InfinniUI.config = window.InfinniUI.config || {};
 
 window.InfinniUI.config.cacheMetadata = false;
 
-// Для разработки
-window.InfinniUI.config.serverUrl = 'http://localhost:5000';
-
-// Тестовый сервер
-// window.InfinniUI.config.serverUrl = 'http://localhost:9900';
-
-window.InfinniUI.config.configId = 'SchoolStore';
-window.InfinniUI.config.configName = 'School Store';
+window.InfinniUI.config.serverUrl = 'http://testcluster.infinnity.local';
+window.InfinniUI.config.configId = 'Infinni.Demo';
+window.InfinniUI.config.configName = 'Infinni.Demo';
 
 window.InfinniUI.config.homePage = {Path: 'StartPage'};
 
@@ -24,5 +19,5 @@ window.SchoolStore.router = window.SchoolStore.router || {};
 window.SchoolStore.services = window.SchoolStore.services || {};
 window.SchoolStore.extensions = window.SchoolStore.extensions || {};
 
-window.SchoolStore.VERSION = '1.1.1.1491882037';
+window.SchoolStore.VERSION = '1.0.0.0';
 window.SchoolStore.HASH = 'development';

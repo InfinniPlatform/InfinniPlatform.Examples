@@ -1,10 +1,10 @@
 ﻿using System;
 
-using InfinniPlatform.Core.Http.Middlewares;
 using InfinniPlatform.Extensions;
 using InfinniPlatform.Sdk.IoC;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +27,9 @@ namespace Infinni.Demo
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddDataProtection(options => options.ApplicationDiscriminator = "Infinni.Demo")
+                    .SetApplicationName("Infinni.Demo");
+
             var serviceProvider = services.AddAuth()
                                           .AddDocumentStorage()
                                           .AddBlobStorage()

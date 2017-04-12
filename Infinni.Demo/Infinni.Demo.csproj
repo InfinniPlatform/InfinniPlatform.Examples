@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="InfinniPlatform.Auth.Internal" Version="2.0.0.60-netcore" />
-    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.60-netcore" />
-    <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.60-netcore" />
-    <PackageReference Include="InfinniPlatform.Log4NetAdapter" Version="2.0.0.60-netcore" />
-    <PackageReference Include="InfinniPlatform.Sdk" Version="2.0.0.60-netcore" />
+    <PackageReference Include="InfinniPlatform.Auth.Internal" Version="2.0.0.62-netcore" />
+    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.62-netcore" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.62-netcore" />
+    <PackageReference Include="InfinniPlatform.Log4NetAdapter" Version="2.0.0.62-netcore" />
+    <PackageReference Include="InfinniPlatform.Sdk" Version="2.0.0.62-netcore" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
   </ItemGroup>

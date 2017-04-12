@@ -13,36 +13,14 @@
         "Items": [
           {
             "Icon": {
-              "Name": "BookIcon",
-              "Value": "book"
+              "Name": "DemoIcon",
+              "Value": "demo"
             }
           },
           {
             "Label": {
               "Name": "ConfigNameLabel",
-              "Text": "School Store"
-            }
-          },
-          {
-            "Button": {
-              "Name": "ServiceProvidersNameButton",
-              "Text": "Поставщики",
-              "Action": {
-                "RouteToAction": {
-                  "Name": "ServiceProvidersRoute"
-                }
-              }
-            }
-          },
-          {
-            "Button": {
-              "Name": "CatalogGoodsNameButton",
-              "Text": "Каталог услуг",
-              "Action": {
-                "RouteToAction": {
-                  "Name": "CatalogGoodsRoute"
-                }
-              }
+              "Text": "Infinni.Demo"
             }
           },
           {
