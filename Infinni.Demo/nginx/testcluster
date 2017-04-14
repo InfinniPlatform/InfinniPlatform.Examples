@@ -1,0 +1,44 @@
+server {
+    listen 80;
+    server_name testcluster.infinnity.local;
+    charset 'utf-8';
+    access_log /var/log/nginx/testcluster/host.access.log upstreamlog;
+    gzip on;
+    gzip_disable "msie6";
+    gzip_comp_level 6;
+    gzip_min_length 1100;
+    gzip_buffers 16 8k;
+    gzip_proxied any;
+    gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+    location ~ /\.ht {
+        deny all;
+    }
+    location / {
+        index index.html;
+        root /home/deployer/ubuntu/wwwroot;
+    }
+    location ~ \.(html|js|css|json|png|otf|eot|svg|ttf|woff|woff2) {
+        index index.html;
+        root /home/deployer/ubuntu/wwwroot;
+    }
+    location /Views/ {
+        root /home/deployer/ubuntu/wwwroot/Views;
+    }
+    location /api/ {
+        rewrite /api/(.*) /$1 break;
+        add_header Access-Control-Allow-Origin http://testcluster.infinnity.local;
+        add_header Access-Control-Allow-Origin $http_origin;
+        add_header Access-Control-Allow-Origin *;
+        include proxy_params_testcluster;
+    }
+}

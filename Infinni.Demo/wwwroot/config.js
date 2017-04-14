@@ -5,7 +5,8 @@ window.InfinniUI.config = window.InfinniUI.config || {};
 
 window.InfinniUI.config.cacheMetadata = false;
 
-window.InfinniUI.config.serverUrl = 'http://testcluster.infinnity.local';
+window.InfinniUI.config.serverRootUrl = 'http://testcluster.infinnity.local';
+window.InfinniUI.config.serverUrl = window.InfinniUI.config.serverRootUrl + '/api';
 window.InfinniUI.config.configId = 'Infinni.Demo';
 window.InfinniUI.config.configName = 'Infinni.Demo';
 

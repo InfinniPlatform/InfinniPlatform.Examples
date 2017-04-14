@@ -28,7 +28,7 @@
   function QueryConstructorMetadata(host, metadata) {
     this.constructMetadataRequest = function() {
       return {
-        requestUrl: host + '/Views/' + metadata.Path + '.json?v1.1.1',
+        requestUrl: window.InfinniUI.config.serverRootUrl + '/Views/' + metadata.Path + '.json?v1.1.1',
         method: 'GET'
       };
     };

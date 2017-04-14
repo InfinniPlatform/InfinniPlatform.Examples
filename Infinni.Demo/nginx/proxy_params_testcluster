@@ -1,0 +1,33 @@
+# Директива задаёт текст, который нужно изменить в строках заголовка "Location" и "Refresh" в ответе проксируемого сервера
+proxy_redirect              off;
+# Заголовоки запроса передаваемый проксируемому серверу.
+proxy_set_header            Host $host;
+proxy_set_header            X-Real-IP $remote_addr;
+proxy_set_header            X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header            Connection close;
+# Директива разрешает передавать от проксируемого сервера клиенту запрещённые для передачи строки.
+proxy_pass_header           Content-Type;
+proxy_pass_header           Content-Disposition;
+proxy_pass_header           Content-Length;
+# Максимально допустимый размер тела запроса клиента.
+client_max_body_size        1024M;
+# Размер буфера для чтения тела запроса клиента.
+client_body_buffer_size     128k;
+# Таймаут для соединения с проксированным сервером.
+proxy_connect_timeout       10;
+# Таймаут при передаче запроса проксированному серверу.
+proxy_send_timeout          60;
+# Таймаут при чтении ответа проксированного сервера.
+proxy_read_timeout          60;
+# Размер буфера, в который будет читаться первая часть ответа, получаемого от проксируемого сервера.
+proxy_buffer_size           64k;
+# Число и размер буферов для одного соединения, в которые будет читаться ответ, получаемый от проксируемого сервера.
+proxy_buffers               8 32k;
+# Размер буфера из которого будет отдаваться ответ клиенту не дожидаясь всего ответа от upstream.
+proxy_busy_buffers_size     64k;
+# Устанавливает количество данных, которые будут записаны на proxy_temp_path при записи.
+proxy_temp_file_write_size  64k;
+
+proxy_cookie_domain localhost testcluster.infinnity.local;
+proxy_pass http://testcluster;
+proxy_redirect http://testcluster https://testcluster.infinnity.local/api/;
