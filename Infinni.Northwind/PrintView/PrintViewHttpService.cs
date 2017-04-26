@@ -32,7 +32,7 @@ namespace Infinni.Northwind.PrintView
         private Task<object> GetPrintViewExample(PrintViewFileFormat fileFormat)
         {
             // Данные печатного представления
-            object dataSource = new DynamicWrapper { { "Date", DateTime.Now } };
+            object dataSource = new DynamicDocument { { "Date", DateTime.Now } };
 
             // Сборка, содержащая в ресурсах шаблон печатного представления
             var resourceAssembly = Assembly.GetEntryAssembly();

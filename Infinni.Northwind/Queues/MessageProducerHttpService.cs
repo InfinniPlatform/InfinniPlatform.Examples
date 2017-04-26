@@ -59,23 +59,23 @@ namespace Infinni.Northwind.Queues
                 await _taskProducer.PublishAsync(exampleMessage, "OnDemandQueue");
             }
 
-            // Преобразуем сообщения в DynamicWrapper.
-            var dynamicWrapperMessages = exampleMessages.Select(exampleMessage => new DynamicWrapper
+            // Преобразуем сообщения в DynamicDocument.
+            var DynamicDocumentMessages = exampleMessages.Select(exampleMessage => new DynamicDocument
                                                                                   {
                                                                                       { "Example", exampleMessage }
                                                                                   })
                                                         .ToArray();
 
             // Отправляем сообщения в широковещательную очередь.
-            foreach (var message in dynamicWrapperMessages)
+            foreach (var message in DynamicDocumentMessages)
             {
-                // Отправлять сообщения с типа DynamicWrapper, следует используя методы PublishDynamic/PublishDynamicAsync, в противном случае метод выбросит ArgumentException.
-                // Т.к. в качестве имени очереди по умолчанию берется имя типа, отправка DynamicWrapper может привести к ошибочной обработке сообщений. 
+                // Отправлять сообщения с типа DynamicDocument, следует используя методы PublishDynamic/PublishDynamicAsync, в противном случае метод выбросит ArgumentException.
+                // Т.к. в качестве имени очереди по умолчанию берется имя типа, отправка DynamicDocument может привести к ошибочной обработке сообщений. 
                 // Чтобы избежать такой ситуации необходимо использовать именованную очередь.
                 await _broadcastProducer.PublishDynamicAsync(message, "DynamicQueue");
             }
 
-            return $"{exampleMessages.Count + dynamicWrapperMessages.Length} messages successfully sended.";
+            return $"{exampleMessages.Count + DynamicDocumentMessages.Length} messages successfully sended.";
         }
 
         /// <summary>

@@ -14,9 +14,9 @@ namespace Infinni.Northwind.Queues
     /// Для отправки сообщения в определенную очередь используется атрибут <see cref="QueueNameAttribute" />
     /// </remarks>
     [QueueName("DynamicQueue")]
-    public class BroadcastConsumerTwo : BroadcastConsumerBase<DynamicWrapper>
+    public class BroadcastConsumerTwo : BroadcastConsumerBase<DynamicDocument>
     {
-        protected override async Task Consume(Message<DynamicWrapper> message)
+        protected override async Task Consume(Message<DynamicDocument> message)
         {
             // Обработка сообщения.
             // Получаем сообщение и выводим его содержимое в консоль.
