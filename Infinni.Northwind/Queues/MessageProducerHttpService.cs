@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using InfinniPlatform.MessageQueue.Contract.Consumers;
-using InfinniPlatform.MessageQueue.Contract.Producers;
-using InfinniPlatform.Sdk.Dynamic;
-using InfinniPlatform.Sdk.Http.Services;
+using InfinniPlatform.Dynamic;
+using InfinniPlatform.Http;
+using InfinniPlatform.MessageQueue;
 
 namespace Infinni.Northwind.Queues
 {

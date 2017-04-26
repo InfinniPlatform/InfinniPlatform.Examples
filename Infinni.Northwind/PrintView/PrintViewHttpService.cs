@@ -3,9 +3,9 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
-using InfinniPlatform.PrintView.Contract;
-using InfinniPlatform.Sdk.Dynamic;
-using InfinniPlatform.Sdk.Http.Services;
+using InfinniPlatform.Dynamic;
+using InfinniPlatform.Http;
+using InfinniPlatform.PrintView;
 
 namespace Infinni.Northwind.PrintView
 {

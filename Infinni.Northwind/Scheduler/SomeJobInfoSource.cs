@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using InfinniPlatform.Scheduler.Contract;
+using InfinniPlatform.Scheduler;
 
 namespace Infinni.Northwind.Scheduler
 {

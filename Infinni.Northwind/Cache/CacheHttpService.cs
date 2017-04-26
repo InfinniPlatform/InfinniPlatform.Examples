@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
-using InfinniPlatform.Caching.Contract;
-using InfinniPlatform.Sdk.Http.Services;
+using InfinniPlatform.Cache;
+using InfinniPlatform.Http;
 
 namespace Infinni.Northwind.Cache
 {
@@ -16,12 +16,12 @@ namespace Infinni.Northwind.Cache
     /// </remarks>
     public class CacheHttpService : IHttpService
     {
-        public CacheHttpService(ICache cache)
+        public CacheHttpService(IInMemoryCache cache)
         {
             _cache = cache;
         }
 
-        private readonly ICache _cache;
+        private readonly IInMemoryCache _cache;
 
         public void Load(IHttpServiceBuilder builder)
         {

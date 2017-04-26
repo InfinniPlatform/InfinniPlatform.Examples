@@ -1,7 +1,7 @@
 ﻿using System;
 
-using InfinniPlatform.Extensions;
-using InfinniPlatform.Sdk.IoC;
+using InfinniPlatform.AspNetCore;
+using InfinniPlatform.IoC;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,11 +13,13 @@ namespace Infinni.Northwind
     {
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var serviceProvider = services.AddCaching()
-                                          .AddDocumentStorage()
-                                          .AddLog4NetAdapter()
-                                          .AddMessageQueue()
-                                          .AddScheduler()
+            var serviceProvider = services.AddMemoryCache()
+                                          .AddRedisSharedCache()
+                                          .AddTwoLayerCache()
+                                          .AddMongoDocumentStorage()
+                                          .AddLogging()
+                                          .AddRabbitMqMessageQueue()
+                                          .AddQuartzScheduler()
                                           .AddPrintView()
                                           .BuildProvider();
 
@@ -26,7 +28,7 @@ namespace Infinni.Northwind
 
         public void Configure(IApplicationBuilder app, IContainerResolver resolver, IApplicationLifetime lifetime)
         {
-            app.UseInfinniMiddlewares(resolver, lifetime);
+            app.UseInfinniMiddlewares(resolver);
         }
     }
 }

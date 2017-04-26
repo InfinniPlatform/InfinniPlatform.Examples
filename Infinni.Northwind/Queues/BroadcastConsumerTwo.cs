@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using InfinniPlatform.MessageQueue.Contract;
-using InfinniPlatform.MessageQueue.Contract.Consumers;
-using InfinniPlatform.Sdk.Dynamic;
-using InfinniPlatform.Sdk.Serialization;
+using InfinniPlatform.Dynamic;
+using InfinniPlatform.MessageQueue;
+using InfinniPlatform.Serialization;
 
 namespace Infinni.Northwind.Queues
 {

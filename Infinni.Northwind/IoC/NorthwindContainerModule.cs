@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 
-using InfinniPlatform.MessageQueue.Contract;
-using InfinniPlatform.Scheduler.Contract;
-using InfinniPlatform.Sdk.Http.Services;
-using InfinniPlatform.Sdk.IoC;
+using InfinniPlatform.Http;
+using InfinniPlatform.IoC;
+using InfinniPlatform.MessageQueue;
+using InfinniPlatform.Scheduler;
 
 namespace Infinni.Northwind.IoC
 {
