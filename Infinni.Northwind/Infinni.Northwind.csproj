@@ -24,6 +24,7 @@
     <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.0.0.124-master" />
     <PackageReference Include="InfinniPlatform.PrintView" Version="2.0.0.124-master" />
     <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.0.0.124-master" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
   </ItemGroup>
 
   <ItemGroup>
