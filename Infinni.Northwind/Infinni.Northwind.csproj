@@ -13,15 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="InfinniPlatform.Cache.Memory" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.Cache.Redis" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.Cache.TwoLayer" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.Logging.Log4Net" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.PrintView" Version="2.0.0.101-master" />
-    <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.0.0.101-master" />
+    <PackageReference Include="InfinniPlatform.Auth" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Auth.HttpService" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Cache.Memory" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Cache.Redis" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Cache.TwoLayer" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Logging.Log4Net" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.PrintView" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.0.0.124-master" />
   </ItemGroup>
 
   <ItemGroup>

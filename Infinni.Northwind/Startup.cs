@@ -13,7 +13,9 @@ namespace Infinni.Northwind
     {
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var serviceProvider = services.AddInMemoryCache()
+            var serviceProvider = services.AddAuthInternal()
+                                          .AddAuthHttpService()
+                                          .AddInMemoryCache()
                                           .AddMongoDocumentStorage()
                                           .AddLog4NetLogging()
                                           .AddRabbitMqMessageQueue()
