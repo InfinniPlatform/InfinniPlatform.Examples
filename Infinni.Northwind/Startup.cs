@@ -3,7 +3,8 @@
 using Infinni.Northwind.Auth;
 
 using InfinniPlatform.AspNetCore;
-using InfinniPlatform.Auth.Identity;
+using InfinniPlatform.Auth;
+using InfinniPlatform.Http.StaticFiles;
 using InfinniPlatform.IoC;
 
 using Microsoft.AspNetCore.Builder;
@@ -43,8 +44,10 @@ namespace Infinni.Northwind
             return serviceProvider;
         }
 
-        public void Configure(IApplicationBuilder app, IContainerResolver resolver, IApplicationLifetime lifetime)
+        public void Configure(IApplicationBuilder app, IContainerResolver resolver)
         {
+            app.UseStaticFilesMapping(_configuration);
+
             app.UseInfinniMiddlewares(resolver);
         }
     }

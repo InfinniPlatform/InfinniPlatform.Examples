@@ -1,7 +1,7 @@
 ﻿using System;
 
-using InfinniPlatform.Extensions;
-using InfinniPlatform.Sdk.IoC;
+using InfinniPlatform.AspNetCore;
+using InfinniPlatform.IoC;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -18,31 +18,32 @@ namespace Infinni.Demo
         {
             var builder = new ConfigurationBuilder()
                     .SetBasePath(env.ContentRootPath)
+                    .AddJsonFile("AppConfig.json", true, true)
+                    .AddJsonFile($"AppConfig.{env.EnvironmentName}.json", true)
                     .AddEnvironmentVariables();
 
-            Configuration = builder.Build();
+            _configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        private readonly IConfigurationRoot _configuration;
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDataProtection(options => options.ApplicationDiscriminator = "Infinni.Demo")
                     .SetApplicationName("Infinni.Demo");
 
-            var serviceProvider = services.AddAuth()
-                                          .AddDocumentStorage()
-                                          .AddBlobStorage()
-                                          .AddLog4NetAdapter()
-                                          .BuildProvider();
+            var serviceProvider = services.AddAuthInternal(_configuration)
+                                          .AddMongoDocumentStorage(_configuration)
+                                          .AddDocumentStorageHttpService()
+                                          .AddLog4NetLogging()
+                                          .AddFileSystemBlobStorage()
+                                          .BuildProvider(_configuration);
 
             return serviceProvider;
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IContainerResolver resolver)
         {
-            loggerFactory.AddConsole();
-
             app.UseInfinniMiddlewares(resolver);
         }
     }

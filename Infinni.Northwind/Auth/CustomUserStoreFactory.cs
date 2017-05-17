@@ -1,4 +1,4 @@
-﻿using InfinniPlatform.Auth.Identity;
+﻿using InfinniPlatform.Auth;
 using InfinniPlatform.IoC;
 
 using Microsoft.AspNetCore.Identity;
@@ -8,9 +8,9 @@ namespace Infinni.Northwind.Auth
     /// <summary>
     /// Фабрика, создающая экземпляры <see cref="CustomUserStore{TUser}" />.
     /// </summary>
-    public class CustomUserStoreFactory : ICustomUserStoreFactory
+    public class CustomUserStoreFactory : IUserStoreFactory
     {
-        public IUserStore<TUser> GetUserStore<TUser>(IContainerResolver resolver) where TUser : AppUser
+        public IUserStore<TUser> Get<TUser>(IContainerResolver resolver) where TUser : AppUser
         {
             return new CustomUserStore<TUser>();
         }

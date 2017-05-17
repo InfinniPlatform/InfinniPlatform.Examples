@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.IO;
+
+using Microsoft.AspNetCore.Hosting;
 
 namespace Infinni.Northwind
 {
@@ -8,6 +10,7 @@ namespace Infinni.Northwind
         {
             var host = new WebHostBuilder()
                     .UseKestrel()
+                    .UseContentRoot(Directory.GetCurrentDirectory())
                     .UseStartup<Startup>()
                     .Build();
 

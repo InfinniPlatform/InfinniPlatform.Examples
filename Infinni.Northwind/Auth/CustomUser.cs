@@ -1,4 +1,4 @@
-﻿using InfinniPlatform.Auth.Identity;
+﻿using InfinniPlatform.Auth;
 
 namespace Infinni.Northwind.Auth
 {

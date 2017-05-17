@@ -10,7 +10,6 @@
   "profiles": {
     "Infinni.Northwind": {
       "commandName": "Project",
-      "workingDirectory": "bin\\Debug\\netcoreapp1.1",
       "applicationUrl": "http://localhost:9900"
     },
     "IIS Express": {

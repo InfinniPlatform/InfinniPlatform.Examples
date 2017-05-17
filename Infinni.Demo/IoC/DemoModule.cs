@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 
-using InfinniPlatform.DocumentStorage.Contract.Services;
-using InfinniPlatform.Sdk.Http.Services;
-using InfinniPlatform.Sdk.IoC;
+using InfinniPlatform.DocumentStorage;
+using InfinniPlatform.Http;
+using InfinniPlatform.IoC;
 
 namespace Infinni.Demo.IoC
 {

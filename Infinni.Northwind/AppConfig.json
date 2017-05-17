@@ -7,8 +7,7 @@
     "ServerPort": 9900,
     "EmbeddedResourceMapping": {},
     "StaticFilesMapping": {
-      "/metadata": "content/metadata",
-      "/": "content/www"
+      "/": "wwwroot"
     }
   },
   "auth": {

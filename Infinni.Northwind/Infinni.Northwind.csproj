@@ -5,32 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\htmlpage.html" />
+    <Content Include="wwwroot\index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="PrintView\PrintViewExample.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="InfinniPlatform.Auth" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Auth.HttpService" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Cache.Memory" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Cache.Redis" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Cache.TwoLayer" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Logging.Log4Net" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.PrintView" Version="2.0.0.124-master" />
-    <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.0.0.124-master" />
+    <PackageReference Include="InfinniPlatform.Auth" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Auth.HttpService" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Cache.Memory" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Cache.Redis" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Cache.TwoLayer" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Core" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Logging.Log4Net" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.PrintView" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.1.0.143-master" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="AppConfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.1.2" />
   </ItemGroup>
   
   <PropertyGroup>

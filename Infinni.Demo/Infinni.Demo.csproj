@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="InfinniPlatform.Auth.Internal" Version="2.0.0.62-netcore" />
-    <PackageReference Include="InfinniPlatform.Core" Version="2.0.0.62-netcore" />
-    <PackageReference Include="InfinniPlatform.DocumentStorage" Version="2.0.0.62-netcore" />
-    <PackageReference Include="InfinniPlatform.Log4NetAdapter" Version="2.0.0.62-netcore" />
-    <PackageReference Include="InfinniPlatform.Sdk" Version="2.0.0.62-netcore" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="InfinniPlatform.Auth" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.BlobStorage.FileSystem" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Core" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage.HttpService" Version="2.1.0.141-master" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.1.0.143-master" />
+    <PackageReference Include="InfinniPlatform.Logging.Log4Net" Version="2.1.0.143-master" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +28,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="wwwroot\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Folder Include="wwwroot\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

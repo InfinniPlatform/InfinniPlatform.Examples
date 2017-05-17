@@ -11,7 +11,6 @@ namespace Infinni.Demo
             var host = new WebHostBuilder()
                     .UseUrls("http://0.0.0.0:5000")    // workaround
                     .UseKestrel()
-                    .UseContentRoot(Directory.GetCurrentDirectory())
                     .UseStartup<Startup>()
                     .Build();
 
