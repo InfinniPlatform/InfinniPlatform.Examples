@@ -1,6 +1,10 @@
 ﻿using System.Reflection;
 
+using Infinni.Northwind.ExternalAuthentication;
+
+using InfinniPlatform.Auth.Middlewares;
 using InfinniPlatform.Http;
+using InfinniPlatform.Http.Middlewares;
 using InfinniPlatform.IoC;
 using InfinniPlatform.MessageQueue;
 using InfinniPlatform.Scheduler;
@@ -42,6 +46,10 @@ namespace Infinni.Northwind.IoC
 
             // Регистрация всех источников планировщика заданий
             builder.RegisterJobInfoSources(assembly);
+
+            builder.RegisterType<FacebookAuthAppLayer>()
+                   .AsSelf()
+                   .SingleInstance();
         }
     }
 }

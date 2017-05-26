@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 
-using Infinni.Northwind.Auth;
+using Infinni.Northwind.Authentication;
+using Infinni.Northwind.ExternalAuthentication;
 
 using InfinniPlatform.AspNetCore;
 using InfinniPlatform.Auth;
+using InfinniPlatform.Auth.Middlewares;
+using InfinniPlatform.Http.Middlewares;
 using InfinniPlatform.Http.StaticFiles;
 using InfinniPlatform.IoC;
 
@@ -19,10 +24,10 @@ namespace Infinni.Northwind
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                    .SetBasePath(env.ContentRootPath)
-                    .AddJsonFile("AppConfig.json", true, true)
-                    .AddJsonFile($"AppConfig.{env.EnvironmentName}.json", true)
-                    .AddEnvironmentVariables();
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("AppConfig.json", true, true)
+                .AddJsonFile($"AppConfig.{env.EnvironmentName}.json", true)
+                .AddEnvironmentVariables();
 
             _configuration = builder.Build();
         }
@@ -31,7 +36,17 @@ namespace Infinni.Northwind
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var serviceProvider = services.AddAuthInternal<CustomUser, AppUserRole>(_configuration, opt => { opt.UserStoreFactory = new CustomUserStoreFactory(); })
+            //var serviceProvider = services.AddAuthInternal<CustomUser, AppUserRole>(_configuration, opt => { opt.UserStoreFactory = new CustomUserStoreFactory(); })
+            //                              .AddAuthHttpService<CustomUser>()
+            //                              .AddInMemoryCache()
+            //                              .AddMongoDocumentStorage(_configuration)
+            //                              .AddLog4NetLogging()
+            //                              .AddRabbitMqMessageQueue(_configuration)
+            //                              .AddQuartzScheduler(_configuration)
+            //                              .AddPrintView(_configuration)
+            //                              .BuildProvider();
+
+            var serviceProvider = services.AddAuthInternal<CustomUser, AppUserRole>(_configuration)
                                           .AddAuthHttpService<CustomUser>()
                                           .AddInMemoryCache()
                                           .AddMongoDocumentStorage(_configuration)
@@ -39,7 +54,7 @@ namespace Infinni.Northwind
                                           .AddRabbitMqMessageQueue(_configuration)
                                           .AddQuartzScheduler(_configuration)
                                           .AddPrintView(_configuration)
-                                          .BuildProvider();
+                                          .BuildProvider(_configuration);
 
             return serviceProvider;
         }
@@ -48,7 +63,14 @@ namespace Infinni.Northwind
         {
             app.UseStaticFilesMapping(_configuration);
 
-            app.UseInfinniMiddlewares(resolver);
+            var appLayersMap = new AppLayersMap(resolver);
+            appLayersMap.AddErrorHandlingAppLayer<ErrorHandlingAppLayer>();
+            appLayersMap.AddAuthenticationBarrierAppLayer<AuthCookieAppLayer>();
+            appLayersMap.AddExternalAuthenticationAppLayer<FacebookAuthAppLayer>();
+            appLayersMap.AddInternalAuthenticationAppLayer<AuthInternalAppLayer>();
+            appLayersMap.AddBusinessAppLayer<NancyAppLayer>();
+
+            app.UseAppLayersMap(appLayersMap);
         }
     }
 }

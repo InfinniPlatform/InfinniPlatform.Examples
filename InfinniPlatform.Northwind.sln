@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{CFD9C999-D4FE-4280-B9DD-FF6C3E6DFCF2}"
 EndProject
@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{DA3C3A18
 		.files\Build\InstallPlatform.ps1 = .files\Build\InstallPlatform.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infinni.Northwind", "Infinni.Northwind\Infinni.Northwind.csproj", "{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infinni.Northwind", "Infinni.Northwind\Infinni.Northwind.csproj", "{3FEE9A6B-9195-4442-8CBB-FB64A13FF827}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infinni.Demo", "Infinni.Demo\Infinni.Demo.csproj", "{4E0699F9-F0F0-4160-9109-F5E0BBC29305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infinni.Demo", "Infinni.Demo\Infinni.Demo.csproj", "{4E0699F9-F0F0-4160-9109-F5E0BBC29305}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

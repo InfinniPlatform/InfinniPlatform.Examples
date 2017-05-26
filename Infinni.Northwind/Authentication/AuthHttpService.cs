@@ -5,7 +5,7 @@ using InfinniPlatform.Http;
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Infinni.Northwind.Auth
+namespace Infinni.Northwind.Authentication
 {
     public class AuthHttpService : IHttpService
     {

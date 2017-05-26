@@ -3,7 +3,7 @@ using InfinniPlatform.IoC;
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Infinni.Northwind.Auth
+namespace Infinni.Northwind.Authentication
 {
     /// <summary>
     /// Фабрика, создающая экземпляры <see cref="CustomUserStore{TUser}" />.

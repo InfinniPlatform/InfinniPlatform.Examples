@@ -1,6 +1,6 @@
 ﻿using InfinniPlatform.Auth;
 
-namespace Infinni.Northwind.Auth
+namespace Infinni.Northwind.Authentication
 {
     /// <summary>
     /// Пользователь.

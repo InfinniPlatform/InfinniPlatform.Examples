@@ -9,7 +9,7 @@ using InfinniPlatform.Auth;
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Infinni.Northwind.Auth
+namespace Infinni.Northwind.Authentication
 {
     /// <summary>
     /// Хранилище пользователей.
