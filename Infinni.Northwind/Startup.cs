@@ -5,8 +5,6 @@ using Infinni.Northwind.IoC;
 
 using InfinniPlatform.AspNetCore;
 using InfinniPlatform.Auth;
-using InfinniPlatform.Auth.HttpService;
-using InfinniPlatform.Http;
 using InfinniPlatform.Http.StaticFiles;
 using InfinniPlatform.IoC;
 using InfinniPlatform.Logging;
@@ -43,16 +41,9 @@ namespace Infinni.Northwind
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            //var serviceProvider = services.AddAuthInternal<CustomUser, AppUserRole>(_configuration, opt => { opt.UserStoreFactory = new CustomUserStoreFactory(); })
-            //                              .AddAuthHttpService<CustomUser>()
-            //                              .AddInMemoryCache()
-            //                              .AddMongoDocumentStorage(_configuration)
-            //                              .AddRabbitMqMessageQueue(_configuration)
-            //                              .AddQuartzScheduler(_configuration)
-            //                              .AddPrintView(_configuration)
-            //                              .BuildProvider();
-
             var serviceProvider = services.AddAuthInternal<CustomUser, AppUserRole>(_configuration)
+                                          // Для подключения сторонней реализации хранилища пользователей:
+                                          //.AddAuthInternal<CustomUser, AppUserRole>(_configuration, opt => { opt.UserStoreFactory = new CustomUserStoreFactory(); })
                                           .AddAuthHttpService<CustomUser>(_configuration)
                                           .AddInMemoryCache()
                                           .AddMongoDocumentStorage(_configuration)
