@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection;
 
 using Infinni.Northwind.Authentication;
-using Infinni.Northwind.ExternalAuthentication;
+using Infinni.Northwind.IoC;
 
 using InfinniPlatform.AspNetCore;
 using InfinniPlatform.Auth;
-using InfinniPlatform.Auth.Middlewares;
-using InfinniPlatform.Http.Middlewares;
+using InfinniPlatform.Auth.HttpService;
+using InfinniPlatform.Http;
 using InfinniPlatform.Http.StaticFiles;
 using InfinniPlatform.IoC;
+using InfinniPlatform.Logging;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+using Serilog;
+using Serilog.Core;
+using Serilog.Filters;
+
+using LogEvent = Serilog.Events.LogEvent;
 
 namespace Infinni.Northwind
 {
@@ -40,37 +47,66 @@ namespace Infinni.Northwind
             //                              .AddAuthHttpService<CustomUser>()
             //                              .AddInMemoryCache()
             //                              .AddMongoDocumentStorage(_configuration)
-            //                              .AddLog4NetLogging()
             //                              .AddRabbitMqMessageQueue(_configuration)
             //                              .AddQuartzScheduler(_configuration)
             //                              .AddPrintView(_configuration)
             //                              .BuildProvider();
 
             var serviceProvider = services.AddAuthInternal<CustomUser, AppUserRole>(_configuration)
-                                          .AddAuthHttpService<CustomUser>()
+                                          .AddAuthHttpService<CustomUser>(_configuration)
                                           .AddInMemoryCache()
                                           .AddMongoDocumentStorage(_configuration)
-                                          .AddLog4NetLogging()
                                           .AddRabbitMqMessageQueue(_configuration)
                                           .AddQuartzScheduler(_configuration)
                                           .AddPrintView(_configuration)
+                                          .AddContainerModule(new NorthwindContainerModule())
                                           .BuildProvider(_configuration);
 
             return serviceProvider;
         }
 
-        public void Configure(IApplicationBuilder app, IContainerResolver resolver)
+        public void Configure(IApplicationBuilder app,
+                              IContainerResolver resolver,
+                              ILoggerFactory loggerFactory,
+                              IApplicationLifetime appLifetime,
+                              IHttpContextAccessor httpContextAccessor)
         {
+            ConfigureLogger(loggerFactory, appLifetime, httpContextAccessor);
+
             app.UseStaticFilesMapping(_configuration);
+            
+            app.UseAppLayers(resolver);
+        }
 
-            var appLayersMap = new AppLayersMap(resolver);
-            appLayersMap.AddErrorHandlingAppLayer<ErrorHandlingAppLayer>();
-            appLayersMap.AddAuthenticationBarrierAppLayer<AuthCookieAppLayer>();
-            appLayersMap.AddExternalAuthenticationAppLayer<FacebookAuthAppLayer>();
-            appLayersMap.AddInternalAuthenticationAppLayer<AuthInternalAppLayer>();
-            appLayersMap.AddBusinessAppLayer<NancyAppLayer>();
+        private static void ConfigureLogger(ILoggerFactory loggerFactory,
+                                            IApplicationLifetime appLifetime,
+                                            IHttpContextAccessor httpContextAccessor)
+        {
+            const string outputTemplate
+                = "{Timestamp:o}|{Level:u3}|{RequestId}|{UserName}|{SourceContext}|{Message}{NewLine}{Exception}";
 
-            app.UseAppLayersMap(appLayersMap);
+            Func<LogEvent, bool> performanceLoggerFilter =
+                Matching.WithProperty<string>(
+                    Constants.SourceContextPropertyName,
+                    p => p.StartsWith(nameof(IPerformanceLogger)));
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .Enrich.With(new HttpContextLogEventEnricher(httpContextAccessor))
+                .WriteTo.LiterateConsole(outputTemplate: outputTemplate)
+                .WriteTo.Logger(lc => lc.Filter.ByExcluding(performanceLoggerFilter)
+                                        .WriteTo.RollingFile("logs/events-{Date}.log",
+                                            outputTemplate: outputTemplate))
+                .WriteTo.Logger(lc => lc.Filter.ByIncludingOnly(performanceLoggerFilter)
+                                        .WriteTo.RollingFile("logs/performance-{Date}.log",
+                                            outputTemplate: outputTemplate))
+                .CreateLogger();
+
+            // Register Serilog
+            loggerFactory.AddSerilog();
+
+            // Ensure any buffered events are sent at shutdown
+            appLifetime.ApplicationStopped.Register(Log.CloseAndFlush);
         }
     }
 }

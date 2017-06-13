@@ -13,19 +13,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="InfinniPlatform.Auth" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.Auth.HttpService" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.Cache.Memory" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.Cache.Redis" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.Cache.TwoLayer" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.Core" Version="2.1.1.152-prerelease" />
-    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.Logging.Log4Net" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.1.1.152" />
-    <PackageReference Include="InfinniPlatform.PrintView" Version="2.1.1.152-prerelease" />
-    <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.1.1.152-prerelease" />
+    <PackageReference Include="InfinniPlatform.Auth" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.Auth.HttpService" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.Cache.Memory" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.Cache.Redis" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.Cache.TwoLayer" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.Core" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.DocumentStorage.MongoDB" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.MessageQueue.RabbitMQ" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.PrintView" Version="2.3.8.166-master" />
+    <PackageReference Include="InfinniPlatform.Scheduler.Quartz" Version="2.3.8.166-master" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.1.2" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="1.4.0" />
+    <PackageReference Include="Serilog.Sinks.Literate" Version="2.1.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
   </ItemGroup>
   
   <PropertyGroup>

@@ -15,6 +15,10 @@
     "LogoutPath": "/Auth/SignOut",
     "UserCacheTimeout": 30
   },
+  "authHttpService": {
+    "SuccessUrl": "/index.html",
+    "FailureUrl": "/index.html"
+  },
   "fileSystemBlobStorage": {
     "BaseDirectory": "${INFINNI_BLOBSTORAGE=BlobStorage}"
   },

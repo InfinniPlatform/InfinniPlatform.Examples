@@ -46,9 +46,26 @@ namespace Infinni.Northwind.IoC
 
             // Регистрация всех источников планировщика заданий
             builder.RegisterJobInfoSources(assembly);
+            
+            // Регистрация OWIN middleware
+            builder.RegisterType<ErrorHandlingAppLayer>()
+                   .As<IErrorHandlingAppLayer>()
+                   .SingleInstance();
+
+            builder.RegisterType<AuthCookieAppLayer>()
+                   .As<IAuthenticationBarrierAppLayer>()
+                   .SingleInstance();
+
+            builder.RegisterType<AuthInternalAppLayer>()
+                   .As<IInternalAuthenticationAppLayer>()
+                   .SingleInstance();
+
+            builder.RegisterType<NancyAppLayer>()
+                   .As<IBusinessAppLayer>()
+                   .SingleInstance();
 
             builder.RegisterType<FacebookAuthAppLayer>()
-                   .AsSelf()
+                   .As<IExternalAuthenticationAppLayer>()
                    .SingleInstance();
         }
     }
